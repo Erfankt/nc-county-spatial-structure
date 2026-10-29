@@ -1,0 +1,19 @@
+year,indicator,moran_I,p_value,label
+2012,poverty_rate,0.42610233705743816,1e-4,Poverty rate
+2012,unemp_rate,0.3664699437397925,1e-4,Unemployment rate
+2012,ba_plus_rate,0.2127619566379121,0.001,Bachelor's degree or higher (25+)
+2012,med_hh_income,0.4635486509199084,1e-4,Median household income ($)
+2012,med_age,0.18728292255745335,0.0018,Median age (years)
+2012,med_home_value,0.35080034982853175,1e-4,Median home value ($)
+2017,poverty_rate,0.38438314696309056,1e-4,Poverty rate
+2017,unemp_rate,0.3891994408911787,1e-4,Unemployment rate
+2017,ba_plus_rate,0.2457820259112492,5e-4,Bachelor's degree or higher (25+)
+2017,med_hh_income,0.4764959837505495,1e-4,Median household income ($)
+2017,med_age,0.1669735914101317,0.0052,Median age (years)
+2017,med_home_value,0.3637215890723262,1e-4,Median home value ($)
+2022,poverty_rate,0.32816494017549214,1e-4,Poverty rate
+2022,unemp_rate,0.2670300611012575,2e-4,Unemployment rate
+2022,ba_plus_rate,0.24007551510947983,2e-4,Bachelor's degree or higher (25+)
+2022,med_hh_income,0.4438806653601013,1e-4,Median household income ($)
+2022,med_age,0.20529057905958903,0.0012,Median age (years)
+2022,med_home_value,0.4058575439826668,1e-4,Median home value ($)

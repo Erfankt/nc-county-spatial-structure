@@ -1,0 +1,7 @@
+name,label,is_rate,median_rel_moe_pct,max_rel_moe_pct
+poverty_rate,Poverty rate,TRUE,12.962361363110524,49.918993610405565
+unemp_rate,Unemployment rate,TRUE,23.333802858464853,94.90489139654593
+ba_plus_rate,Bachelor's degree or higher (25+),TRUE,8.607607653072742,43.901553681664495
+med_hh_income,Median household income ($),FALSE,5.435040455832471,31.218552739914006
+med_age,Median age (years),FALSE,1.0400501776222946,7.9470198675496695
+med_home_value,Median home value ($),FALSE,4.936479840041417,26.45266903914591

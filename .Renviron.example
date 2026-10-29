@@ -1,0 +1,3 @@
+# Copy these lines into your own ~/.Renviron (usethis::edit_r_environ()). Do NOT commit your real key.
+# Free key: https://api.census.gov/data/key_signup.html
+CENSUS_API_KEY=

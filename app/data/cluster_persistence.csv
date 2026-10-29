@@ -1,0 +1,13 @@
+indicator,GEOID,NAME,cluster_fdr,n_windows,windows
+med_hh_income,37063,Durham,High-High,1,2022
+med_hh_income,37119,Mecklenburg,High-High,1,2022
+med_hh_income,37015,Bertie,Low-Low,1,2022
+med_hh_income,37131,Northampton,Low-Low,1,2022
+med_home_value,37015,Bertie,Low-Low,3,"2012, 2017, 2022"
+med_home_value,37131,Northampton,Low-Low,1,2022
+poverty_rate,37053,Currituck,Low-Low,1,2022
+poverty_rate,37119,Mecklenburg,Low-Low,1,2022
+unemp_rate,37015,Bertie,High-High,2,"2012, 2022"
+unemp_rate,37117,Martin,High-High,1,2012
+unemp_rate,37087,Haywood,Low-Low,1,2012
+unemp_rate,37175,Transylvania,Low-Low,1,2017

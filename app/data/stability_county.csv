@@ -1,0 +1,601 @@
+indicator,GEOID,NAME,cluster_headline_fdr,cluster_headline_raw,cluster_analytic,share_draws_same_raw_class,share_draws_raw_significant,median_perm_p
+poverty_rate,37001,Alamance,Not significant,Not significant,Not significant,1,0,0.586
+poverty_rate,37003,Alexander,Not significant,Not significant,Not significant,1,0,0.336
+poverty_rate,37005,Alleghany,Not significant,Not significant,Not significant,1,0,0.684
+poverty_rate,37007,Anson,Not significant,Not significant,Not significant,1,0,0.805
+poverty_rate,37009,Ashe,Not significant,Not significant,Not significant,0.876,0.124,0.096
+poverty_rate,37011,Avery,Not significant,Not significant,Not significant,1,0,0.6
+poverty_rate,37013,Beaufort,Not significant,High-High,Not significant,0.456,0.53,0.046
+poverty_rate,37015,Bertie,Not significant,High-High,Not significant,0.8,0.806,0.03
+poverty_rate,37017,Bladen,Not significant,High-High,Not significant,0.274,0.274,0.066
+poverty_rate,37019,Brunswick,Not significant,Not significant,Not significant,1,0,0.874
+poverty_rate,37021,Buncombe,Not significant,Not significant,Not significant,1,0,0.39
+poverty_rate,37023,Burke,Not significant,Not significant,Not significant,1,0,0.408
+poverty_rate,37025,Cabarrus,Not significant,Low-Low,Not significant,0.67,0.67,0.04
+poverty_rate,37027,Caldwell,Not significant,Not significant,Not significant,1,0,0.826
+poverty_rate,37029,Camden,Not significant,Not significant,Not significant,0.854,0.146,0.153
+poverty_rate,37031,Carteret,Not significant,Not significant,Not significant,1,0,0.77
+poverty_rate,37033,Caswell,Not significant,Not significant,Not significant,1,0,0.885
+poverty_rate,37035,Catawba,Not significant,Not significant,Not significant,0.93,0.07,0.116
+poverty_rate,37037,Chatham,Not significant,Not significant,Not significant,0.856,0.144,0.078
+poverty_rate,37039,Cherokee,Not significant,Not significant,Not significant,0.998,0.002,0.51
+poverty_rate,37041,Chowan,Not significant,Not significant,Not significant,1,0,0.751
+poverty_rate,37043,Clay,Not significant,Not significant,Not significant,1,0,0.823
+poverty_rate,37045,Cleveland,Not significant,Not significant,Not significant,1,0,0.564
+poverty_rate,37047,Columbus,Not significant,Not significant,Not significant,1,0,0.3
+poverty_rate,37049,Craven,Not significant,Not significant,Not significant,1,0,0.54
+poverty_rate,37051,Cumberland,Not significant,Not significant,Not significant,0.912,0.088,0.094
+poverty_rate,37053,Currituck,Low-Low,Low-Low,Not significant,1,1,0.004
+poverty_rate,37055,Dare,Not significant,Not significant,Not significant,0.93,0.07,0.288
+poverty_rate,37057,Davidson,Not significant,Not significant,Not significant,1,0,0.68
+poverty_rate,37059,Davie,Not significant,Not significant,Not significant,1,0,0.408
+poverty_rate,37061,Duplin,Not significant,Not significant,Not significant,1,0,0.375
+poverty_rate,37063,Durham,Not significant,Not significant,Not significant,0.988,0.012,0.15
+poverty_rate,37065,Edgecombe,Not significant,Not significant,Not significant,0.646,0.354,0.06
+poverty_rate,37067,Forsyth,Not significant,Not significant,Not significant,1,0,0.682
+poverty_rate,37069,Franklin,Not significant,Not significant,Not significant,1,0,0.81
+poverty_rate,37071,Gaston,Not significant,Not significant,Not significant,1,0,0.326
+poverty_rate,37073,Gates,Not significant,Not significant,Not significant,1,0,0.634
+poverty_rate,37075,Graham,Not significant,Not significant,Not significant,1,0,0.514
+poverty_rate,37077,Granville,Not significant,Not significant,Not significant,1,0,0.318
+poverty_rate,37079,Greene,Not significant,Not significant,Not significant,0.902,0.098,0.094
+poverty_rate,37081,Guilford,Not significant,Not significant,Not significant,1,0,0.746
+poverty_rate,37083,Halifax,Not significant,Not significant,Not significant,0.984,0.016,0.156
+poverty_rate,37085,Harnett,Not significant,Not significant,Not significant,1,0,0.309
+poverty_rate,37087,Haywood,Not significant,Not significant,Not significant,1,0,0.648
+poverty_rate,37089,Henderson,Not significant,Not significant,Not significant,1,0,0.28
+poverty_rate,37091,Hertford,Not significant,Not significant,Not significant,0.976,0.024,0.234
+poverty_rate,37093,Hoke,Not significant,High-High,Not significant,0.582,0.612,0.042
+poverty_rate,37095,Hyde,Not significant,Not significant,Not significant,1,0,0.693
+poverty_rate,37097,Iredell,Not significant,Low-Low,Not significant,0.538,0.538,0.046
+poverty_rate,37099,Jackson,Not significant,Not significant,Not significant,1,0,0.837
+poverty_rate,37101,Johnston,Not significant,Not significant,Not significant,1,0,0.885
+poverty_rate,37103,Jones,Not significant,Not significant,Not significant,1,0,0.878
+poverty_rate,37105,Lee,Not significant,Not significant,Not significant,1,0,0.172
+poverty_rate,37107,Lenoir,Not significant,Not significant,Not significant,0.99,0.01,0.166
+poverty_rate,37109,Lincoln,Not significant,Not significant,Not significant,1,0,0.314
+poverty_rate,37111,McDowell,Not significant,Not significant,Not significant,1,0,0.618
+poverty_rate,37113,Macon,Not significant,Not significant,Not significant,1,0,0.772
+poverty_rate,37115,Madison,Not significant,Not significant,Not significant,1,0,0.372
+poverty_rate,37117,Martin,Not significant,High-High,Not significant,0.926,0.928,0.014
+poverty_rate,37119,Mecklenburg,Low-Low,Low-Low,Not significant,1,1,0.004
+poverty_rate,37121,Mitchell,Not significant,Not significant,Not significant,1,0,0.564
+poverty_rate,37123,Montgomery,Not significant,Not significant,Not significant,1,0,0.842
+poverty_rate,37125,Moore,Not significant,Not significant,Not significant,1,0,0.364
+poverty_rate,37127,Nash,Not significant,Not significant,Not significant,1,0,0.628
+poverty_rate,37129,New Hanover,Not significant,Not significant,Not significant,0.942,0.058,0.104
+poverty_rate,37131,Northampton,Not significant,High-High,Not significant,0.712,0.738,0.028
+poverty_rate,37133,Onslow,Not significant,Not significant,Not significant,1,0,0.635
+poverty_rate,37135,Orange,Not significant,Not significant,Not significant,1,0,0.451
+poverty_rate,37137,Pamlico,Not significant,Not significant,Not significant,1,0,0.87
+poverty_rate,37139,Pasquotank,Not significant,Not significant,Not significant,0.832,0.168,0.112
+poverty_rate,37141,Pender,Not significant,Not significant,Not significant,1,0,0.387
+poverty_rate,37143,Perquimans,Not significant,Not significant,Not significant,1,0,0.754
+poverty_rate,37145,Person,Not significant,Not significant,Not significant,1,0,0.42
+poverty_rate,37147,Pitt,Not significant,High-High,Not significant,0.596,0.596,0.042
+poverty_rate,37149,Polk,Not significant,Not significant,Not significant,1,0,0.846
+poverty_rate,37151,Randolph,Not significant,Not significant,Not significant,0.998,0.002,0.262
+poverty_rate,37153,Richmond,Not significant,Not significant,Not significant,1,0,0.434
+poverty_rate,37155,Robeson,Not significant,High-High,Not significant,0.986,0.986,0.012
+poverty_rate,37157,Rockingham,Not significant,Not significant,Not significant,1,0,0.556
+poverty_rate,37159,Rowan,Not significant,High-Low,Not significant,0.38,0.458,0.051
+poverty_rate,37161,Rutherford,Not significant,Not significant,Not significant,1,0,0.458
+poverty_rate,37163,Sampson,Not significant,Not significant,Not significant,1,0,0.628
+poverty_rate,37165,Scotland,Not significant,Not significant,Not significant,0.984,0.016,0.142
+poverty_rate,37167,Stanly,Not significant,Not significant,Not significant,1,0,0.704
+poverty_rate,37169,Stokes,Not significant,Not significant,Not significant,1,0,0.646
+poverty_rate,37171,Surry,Not significant,Not significant,Not significant,1,0,0.857
+poverty_rate,37173,Swain,Not significant,Not significant,Not significant,1,0,0.701
+poverty_rate,37175,Transylvania,Not significant,Not significant,Not significant,1,0,0.426
+poverty_rate,37177,Tyrrell,Not significant,High-High,Not significant,0.458,0.856,0.016
+poverty_rate,37179,Union,Not significant,Not significant,Not significant,0.996,0.004,0.295
+poverty_rate,37181,Vance,Not significant,Not significant,Not significant,1,0,0.816
+poverty_rate,37183,Wake,Not significant,Low-Low,Not significant,0.216,0.216,0.068
+poverty_rate,37185,Warren,Not significant,Not significant,Not significant,1,0,0.498
+poverty_rate,37187,Washington,Not significant,High-High,Not significant,0.658,0.66,0.028
+poverty_rate,37189,Watauga,Not significant,Not significant,Not significant,1,0,0.51
+poverty_rate,37191,Wayne,Not significant,Not significant,Not significant,0.686,0.314,0.066
+poverty_rate,37193,Wilkes,Not significant,Not significant,Not significant,1,0,0.876
+poverty_rate,37195,Wilson,Not significant,Not significant,Not significant,0.998,0.002,0.242
+poverty_rate,37197,Yadkin,Not significant,Not significant,Not significant,1,0,0.577
+poverty_rate,37199,Yancey,Not significant,Not significant,Not significant,1,0,0.313
+unemp_rate,37001,Alamance,Not significant,Not significant,Not significant,0.96,0.04,0.22
+unemp_rate,37003,Alexander,Not significant,Not significant,Not significant,1,0,0.777
+unemp_rate,37005,Alleghany,Not significant,Not significant,Not significant,1,0,0.737
+unemp_rate,37007,Anson,Not significant,Not significant,Not significant,1,0,0.703
+unemp_rate,37009,Ashe,Not significant,Not significant,Not significant,0.988,0.012,0.318
+unemp_rate,37011,Avery,Not significant,Not significant,Not significant,0.988,0.012,0.31
+unemp_rate,37013,Beaufort,Not significant,Low-High,Low-High,0.37,0.664,0.022
+unemp_rate,37015,Bertie,High-High,High-High,High-High,0.652,0.966,0.01
+unemp_rate,37017,Bladen,Not significant,Not significant,Not significant,1,0,0.439
+unemp_rate,37019,Brunswick,Not significant,Not significant,Not significant,1,0,0.775
+unemp_rate,37021,Buncombe,Not significant,Low-Low,Not significant,0.252,0.252,0.11
+unemp_rate,37023,Burke,Not significant,Not significant,Not significant,1,0,0.794
+unemp_rate,37025,Cabarrus,Not significant,Not significant,Not significant,0.998,0.002,0.362
+unemp_rate,37027,Caldwell,Not significant,Not significant,Not significant,0.998,0.002,0.507
+unemp_rate,37029,Camden,Not significant,Not significant,Not significant,0.998,0.002,0.605
+unemp_rate,37031,Carteret,Not significant,Not significant,Not significant,1,0,0.755
+unemp_rate,37033,Caswell,Not significant,Not significant,Not significant,1,0,0.352
+unemp_rate,37035,Catawba,Not significant,Not significant,Not significant,1,0,0.72
+unemp_rate,37037,Chatham,Not significant,Low-Low,Not significant,0.32,0.32,0.066
+unemp_rate,37039,Cherokee,Not significant,Not significant,Not significant,0.936,0.064,0.547
+unemp_rate,37041,Chowan,Not significant,Not significant,Not significant,0.9,0.1,0.27
+unemp_rate,37043,Clay,Not significant,Not significant,Not significant,0.932,0.068,0.269
+unemp_rate,37045,Cleveland,Not significant,Not significant,Not significant,1,0,0.755
+unemp_rate,37047,Columbus,Not significant,Not significant,Not significant,1,0,0.761
+unemp_rate,37049,Craven,Not significant,Not significant,Not significant,1,0,0.756
+unemp_rate,37051,Cumberland,Not significant,Not significant,Not significant,1,0,0.811
+unemp_rate,37053,Currituck,Not significant,Not significant,Not significant,0.996,0.004,0.656
+unemp_rate,37055,Dare,Not significant,Not significant,Not significant,0.808,0.192,0.238
+unemp_rate,37057,Davidson,Not significant,Not significant,Not significant,0.984,0.016,0.213
+unemp_rate,37059,Davie,Not significant,Not significant,Not significant,1,0,0.64
+unemp_rate,37061,Duplin,Not significant,Not significant,Not significant,1,0,0.735
+unemp_rate,37063,Durham,Not significant,Low-Low,Not significant,0.842,0.842,0.022
+unemp_rate,37065,Edgecombe,Not significant,High-High,Not significant,0.642,0.654,0.036
+unemp_rate,37067,Forsyth,Not significant,Not significant,Not significant,0.998,0.002,0.526
+unemp_rate,37069,Franklin,Not significant,Not significant,Not significant,0.994,0.006,0.307
+unemp_rate,37071,Gaston,Not significant,Not significant,Not significant,1,0,0.678
+unemp_rate,37073,Gates,Not significant,Not significant,Not significant,0.988,0.012,0.587
+unemp_rate,37075,Graham,Not significant,Not significant,Not significant,0.992,0.008,0.706
+unemp_rate,37077,Granville,Not significant,Not significant,Not significant,1,0,0.492
+unemp_rate,37079,Greene,Not significant,Not significant,Not significant,1,0,0.389
+unemp_rate,37081,Guilford,Not significant,Not significant,Not significant,1,0,0.528
+unemp_rate,37083,Halifax,Not significant,High-High,High-High,0.692,0.692,0.028
+unemp_rate,37085,Harnett,Not significant,Not significant,Not significant,1,0,0.311
+unemp_rate,37087,Haywood,Not significant,Low-Low,Not significant,0.328,0.328,0.088
+unemp_rate,37089,Henderson,Not significant,Low-Low,Not significant,0.246,0.246,0.094
+unemp_rate,37091,Hertford,Not significant,Not significant,Not significant,0.926,0.074,0.26
+unemp_rate,37093,Hoke,Not significant,High-High,Not significant,0.43,0.516,0.046
+unemp_rate,37095,Hyde,Not significant,Not significant,Not significant,0.926,0.074,0.248
+unemp_rate,37097,Iredell,Not significant,Not significant,Not significant,0.998,0.002,0.468
+unemp_rate,37099,Jackson,Not significant,Not significant,Not significant,0.934,0.066,0.274
+unemp_rate,37101,Johnston,Not significant,Not significant,Not significant,1,0,0.829
+unemp_rate,37103,Jones,Not significant,Not significant,Not significant,1,0,0.792
+unemp_rate,37105,Lee,Not significant,Not significant,Not significant,0.948,0.052,0.171
+unemp_rate,37107,Lenoir,Not significant,Not significant,Not significant,1,0,0.782
+unemp_rate,37109,Lincoln,Not significant,Not significant,Not significant,1,0,0.668
+unemp_rate,37111,McDowell,Not significant,Not significant,Not significant,1,0,0.739
+unemp_rate,37113,Macon,Not significant,Not significant,Not significant,0.988,0.012,0.58
+unemp_rate,37115,Madison,Not significant,Not significant,Not significant,0.986,0.014,0.484
+unemp_rate,37117,Martin,Not significant,High-High,High-High,0.884,0.884,0.014
+unemp_rate,37119,Mecklenburg,Not significant,Not significant,Not significant,0.998,0.002,0.242
+unemp_rate,37121,Mitchell,Not significant,Not significant,Not significant,0.998,0.002,0.663
+unemp_rate,37123,Montgomery,Not significant,Not significant,Not significant,1,0,0.72
+unemp_rate,37125,Moore,Not significant,Not significant,Not significant,1,0,0.57
+unemp_rate,37127,Nash,Not significant,Not significant,Not significant,0.93,0.07,0.158
+unemp_rate,37129,New Hanover,Not significant,Not significant,Not significant,1,0,0.787
+unemp_rate,37131,Northampton,Not significant,High-High,Not significant,0.496,0.524,0.048
+unemp_rate,37133,Onslow,Not significant,Not significant,Not significant,0.996,0.004,0.721
+unemp_rate,37135,Orange,Not significant,Low-Low,Not significant,0.238,0.238,0.1
+unemp_rate,37137,Pamlico,Not significant,Not significant,Not significant,1,0,0.81
+unemp_rate,37139,Pasquotank,Not significant,Not significant,Not significant,0.946,0.054,0.395
+unemp_rate,37141,Pender,Not significant,Not significant,Not significant,1,0,0.795
+unemp_rate,37143,Perquimans,Not significant,Not significant,Not significant,0.98,0.02,0.457
+unemp_rate,37145,Person,Not significant,Not significant,Not significant,0.962,0.038,0.305
+unemp_rate,37147,Pitt,Not significant,Not significant,Not significant,0.868,0.132,0.14
+unemp_rate,37149,Polk,Not significant,Not significant,Not significant,1,0,0.564
+unemp_rate,37151,Randolph,Not significant,Low-Low,Not significant,0.656,0.656,0.034
+unemp_rate,37153,Richmond,Not significant,Not significant,Not significant,1,0,0.665
+unemp_rate,37155,Robeson,Not significant,Not significant,Not significant,0.886,0.114,0.13
+unemp_rate,37157,Rockingham,Not significant,Not significant,Not significant,1,0,0.783
+unemp_rate,37159,Rowan,Not significant,Not significant,Not significant,0.978,0.022,0.194
+unemp_rate,37161,Rutherford,Not significant,Not significant,Not significant,0.998,0.002,0.387
+unemp_rate,37163,Sampson,Not significant,Not significant,Not significant,1,0,0.816
+unemp_rate,37165,Scotland,Not significant,Not significant,Not significant,0.998,0.002,0.286
+unemp_rate,37167,Stanly,Not significant,Not significant,Not significant,1,0,0.756
+unemp_rate,37169,Stokes,Not significant,Not significant,Not significant,1,0,0.854
+unemp_rate,37171,Surry,Not significant,Not significant,Not significant,0.998,0.002,0.72
+unemp_rate,37173,Swain,Not significant,Not significant,Not significant,0.976,0.024,0.59
+unemp_rate,37175,Transylvania,Not significant,Low-Low,Not significant,0.24,0.24,0.1
+unemp_rate,37177,Tyrrell,Not significant,Low-High,Low-High,0.572,0.722,0.012
+unemp_rate,37179,Union,Not significant,Not significant,Not significant,0.998,0.002,0.536
+unemp_rate,37181,Vance,Not significant,Not significant,Not significant,0.994,0.006,0.31
+unemp_rate,37183,Wake,Not significant,Not significant,Not significant,0.97,0.03,0.19
+unemp_rate,37185,Warren,Not significant,Not significant,Not significant,0.898,0.102,0.134
+unemp_rate,37187,Washington,Not significant,Not significant,Not significant,0.778,0.222,0.224
+unemp_rate,37189,Watauga,Not significant,Not significant,Not significant,1,0,0.777
+unemp_rate,37191,Wayne,Not significant,Not significant,Not significant,1,0,0.81
+unemp_rate,37193,Wilkes,Not significant,Not significant,Not significant,1,0,0.719
+unemp_rate,37195,Wilson,Not significant,Not significant,Not significant,1,0,0.553
+unemp_rate,37197,Yadkin,Not significant,Not significant,Not significant,0.998,0.002,0.6
+unemp_rate,37199,Yancey,Not significant,Not significant,Not significant,0.808,0.192,0.155
+ba_plus_rate,37001,Alamance,Not significant,Not significant,Not significant,1,0,0.09
+ba_plus_rate,37003,Alexander,Not significant,Not significant,Not significant,1,0,0.828
+ba_plus_rate,37005,Alleghany,Not significant,Not significant,Not significant,1,0,0.318
+ba_plus_rate,37007,Anson,Not significant,Not significant,Not significant,1,0,0.932
+ba_plus_rate,37009,Ashe,Not significant,Not significant,Not significant,1,0,0.584
+ba_plus_rate,37011,Avery,Not significant,Not significant,Not significant,1,0,0.934
+ba_plus_rate,37013,Beaufort,Not significant,Not significant,Not significant,1,0,0.46
+ba_plus_rate,37015,Bertie,Not significant,Low-Low,Not significant,0.942,0.942,0.02
+ba_plus_rate,37017,Bladen,Not significant,Not significant,Not significant,1,0,0.37
+ba_plus_rate,37019,Brunswick,Not significant,Not significant,Not significant,1,0,0.41
+ba_plus_rate,37021,Buncombe,Not significant,Not significant,Not significant,1,0,0.388
+ba_plus_rate,37023,Burke,Not significant,Not significant,Not significant,1,0,0.394
+ba_plus_rate,37025,Cabarrus,Not significant,Not significant,Not significant,1,0,0.148
+ba_plus_rate,37027,Caldwell,Not significant,Not significant,Not significant,1,0,0.896
+ba_plus_rate,37029,Camden,Not significant,Not significant,Not significant,1,0,0.676
+ba_plus_rate,37031,Carteret,Not significant,Not significant,Not significant,1,0,0.851
+ba_plus_rate,37033,Caswell,Not significant,Not significant,Not significant,1,0,0.262
+ba_plus_rate,37035,Catawba,Not significant,Not significant,Not significant,1,0,0.739
+ba_plus_rate,37037,Chatham,Not significant,High-High,High-High,1,1,0.002
+ba_plus_rate,37039,Cherokee,Not significant,Not significant,Not significant,1,0,0.795
+ba_plus_rate,37041,Chowan,Not significant,Low-Low,Not significant,0.404,0.798,0.028
+ba_plus_rate,37043,Clay,Not significant,Not significant,Not significant,1,0,0.847
+ba_plus_rate,37045,Cleveland,Not significant,Not significant,Not significant,1,0,0.857
+ba_plus_rate,37047,Columbus,Not significant,Not significant,Not significant,1,0,0.94
+ba_plus_rate,37049,Craven,Not significant,Not significant,Not significant,1,0,0.807
+ba_plus_rate,37051,Cumberland,Not significant,Not significant,Not significant,1,0,0.628
+ba_plus_rate,37053,Currituck,Not significant,Not significant,Not significant,1,0,0.247
+ba_plus_rate,37055,Dare,Not significant,Not significant,Not significant,1,0,0.695
+ba_plus_rate,37057,Davidson,Not significant,Not significant,Not significant,1,0,0.794
+ba_plus_rate,37059,Davie,Not significant,Not significant,Not significant,1,0,0.876
+ba_plus_rate,37061,Duplin,Not significant,Not significant,Not significant,1,0,0.294
+ba_plus_rate,37063,Durham,Not significant,High-High,High-High,1,1,0.006
+ba_plus_rate,37065,Edgecombe,Not significant,Not significant,Not significant,1,0,0.506
+ba_plus_rate,37067,Forsyth,Not significant,Not significant,Not significant,1,0,0.504
+ba_plus_rate,37069,Franklin,Not significant,Not significant,Not significant,1,0,0.75
+ba_plus_rate,37071,Gaston,Not significant,Not significant,Not significant,1,0,0.286
+ba_plus_rate,37073,Gates,Not significant,Not significant,Not significant,1,0,0.607
+ba_plus_rate,37075,Graham,Not significant,Not significant,Not significant,1,0,0.904
+ba_plus_rate,37077,Granville,Not significant,Not significant,Not significant,0.998,0.002,0.1
+ba_plus_rate,37079,Greene,Not significant,Not significant,Not significant,1,0,0.776
+ba_plus_rate,37081,Guilford,Not significant,Not significant,Not significant,1,0,0.661
+ba_plus_rate,37083,Halifax,Not significant,Not significant,Not significant,0.994,0.006,0.108
+ba_plus_rate,37085,Harnett,Not significant,Low-High,Not significant,0.326,0.332,0.052
+ba_plus_rate,37087,Haywood,Not significant,Not significant,Not significant,0.786,0.214,0.062
+ba_plus_rate,37089,Henderson,Not significant,Not significant,Not significant,1,0,0.098
+ba_plus_rate,37091,Hertford,Not significant,Not significant,Not significant,0.856,0.144,0.088
+ba_plus_rate,37093,Hoke,Not significant,Not significant,Not significant,1,0,0.751
+ba_plus_rate,37095,Hyde,Not significant,Not significant,Not significant,1,0,0.737
+ba_plus_rate,37097,Iredell,Not significant,Not significant,Not significant,1,0,0.706
+ba_plus_rate,37099,Jackson,Not significant,Not significant,Not significant,1,0,0.486
+ba_plus_rate,37101,Johnston,Not significant,Not significant,Not significant,1,0,0.713
+ba_plus_rate,37103,Jones,Not significant,Not significant,Not significant,1,0,0.756
+ba_plus_rate,37105,Lee,Not significant,Not significant,Not significant,1,0,0.112
+ba_plus_rate,37107,Lenoir,Not significant,Not significant,Not significant,1,0,0.296
+ba_plus_rate,37109,Lincoln,Not significant,Not significant,Not significant,1,0,0.378
+ba_plus_rate,37111,McDowell,Not significant,Not significant,Not significant,1,0,0.85
+ba_plus_rate,37113,Macon,Not significant,Not significant,Not significant,1,0,0.907
+ba_plus_rate,37115,Madison,Not significant,Not significant,Not significant,1,0,0.296
+ba_plus_rate,37117,Martin,Not significant,Not significant,Not significant,1,0,0.228
+ba_plus_rate,37119,Mecklenburg,Not significant,Not significant,Not significant,1,0,0.126
+ba_plus_rate,37121,Mitchell,Not significant,Not significant,Not significant,1,0,0.65
+ba_plus_rate,37123,Montgomery,Not significant,Not significant,Not significant,1,0,0.354
+ba_plus_rate,37125,Moore,Not significant,Not significant,Not significant,1,0,0.742
+ba_plus_rate,37127,Nash,Not significant,Not significant,Not significant,1,0,0.764
+ba_plus_rate,37129,New Hanover,Not significant,Not significant,Not significant,1,0,0.338
+ba_plus_rate,37131,Northampton,Not significant,Not significant,Not significant,0.868,0.132,0.078
+ba_plus_rate,37133,Onslow,Not significant,Not significant,Not significant,1,0,0.858
+ba_plus_rate,37135,Orange,Not significant,Not significant,Not significant,1,0,0.102
+ba_plus_rate,37137,Pamlico,Not significant,Not significant,Not significant,1,0,0.932
+ba_plus_rate,37139,Pasquotank,Not significant,Not significant,Not significant,0.986,0.014,0.225
+ba_plus_rate,37141,Pender,Not significant,Not significant,Not significant,1,0,0.94
+ba_plus_rate,37143,Perquimans,Not significant,Not significant,Not significant,1,0,0.462
+ba_plus_rate,37145,Person,Not significant,Low-High,Not significant,1,1,0.024
+ba_plus_rate,37147,Pitt,Not significant,Not significant,Not significant,0.516,0.484,0.05
+ba_plus_rate,37149,Polk,Not significant,Not significant,Not significant,1,0,0.646
+ba_plus_rate,37151,Randolph,Not significant,Not significant,Not significant,1,0,0.098
+ba_plus_rate,37153,Richmond,Not significant,Not significant,Not significant,1,0,0.386
+ba_plus_rate,37155,Robeson,Not significant,Not significant,Not significant,1,0,0.24
+ba_plus_rate,37157,Rockingham,Not significant,Not significant,Not significant,1,0,0.654
+ba_plus_rate,37159,Rowan,Not significant,Not significant,Not significant,1,0,0.546
+ba_plus_rate,37161,Rutherford,Not significant,Not significant,Not significant,1,0,0.436
+ba_plus_rate,37163,Sampson,Not significant,Not significant,Not significant,1,0,0.784
+ba_plus_rate,37165,Scotland,Not significant,Not significant,Not significant,1,0,0.83
+ba_plus_rate,37167,Stanly,Not significant,Not significant,Not significant,1,0,0.858
+ba_plus_rate,37169,Stokes,Not significant,Not significant,Not significant,1,0,0.64
+ba_plus_rate,37171,Surry,Not significant,Not significant,Not significant,1,0,0.444
+ba_plus_rate,37173,Swain,Not significant,Not significant,Not significant,1,0,0.929
+ba_plus_rate,37175,Transylvania,Not significant,Not significant,Not significant,1,0,0.082
+ba_plus_rate,37177,Tyrrell,Not significant,Low-Low,Not significant,0.496,0.496,0.05
+ba_plus_rate,37179,Union,Not significant,Not significant,Not significant,1,0,0.4
+ba_plus_rate,37181,Vance,Not significant,Not significant,Not significant,1,0,0.716
+ba_plus_rate,37183,Wake,Not significant,Not significant,Not significant,1,0,0.094
+ba_plus_rate,37185,Warren,Not significant,Not significant,Not significant,1,0,0.258
+ba_plus_rate,37187,Washington,Not significant,Low-Low,Not significant,0.932,0.932,0.018
+ba_plus_rate,37189,Watauga,Not significant,Not significant,Not significant,1,0,0.39
+ba_plus_rate,37191,Wayne,Not significant,Low-Low,Not significant,0.668,0.668,0.04
+ba_plus_rate,37193,Wilkes,Not significant,Not significant,Not significant,1,0,0.746
+ba_plus_rate,37195,Wilson,Not significant,Not significant,Not significant,1,0,0.582
+ba_plus_rate,37197,Yadkin,Not significant,Not significant,Not significant,1,0,0.73
+ba_plus_rate,37199,Yancey,Not significant,Not significant,Not significant,1,0,0.393
+med_hh_income,37001,Alamance,Not significant,Not significant,Not significant,1,0,0.156
+med_hh_income,37003,Alexander,Not significant,Not significant,Not significant,1,0,0.802
+med_hh_income,37005,Alleghany,Not significant,Not significant,Not significant,1,0,0.232
+med_hh_income,37007,Anson,Not significant,Not significant,Not significant,1,0,0.374
+med_hh_income,37009,Ashe,Not significant,Not significant,Not significant,0.814,0.186,0.09
+med_hh_income,37011,Avery,Not significant,Not significant,Not significant,0.998,0.002,0.334
+med_hh_income,37013,Beaufort,Not significant,Not significant,Not significant,0.638,0.362,0.072
+med_hh_income,37015,Bertie,Low-Low,Low-Low,Not significant,1,1,0.006
+med_hh_income,37017,Bladen,Not significant,Not significant,Not significant,1,0,0.304
+med_hh_income,37019,Brunswick,Not significant,Not significant,Not significant,1,0,0.638
+med_hh_income,37021,Buncombe,Not significant,Not significant,Not significant,1,0,0.813
+med_hh_income,37023,Burke,Not significant,Not significant,Not significant,1,0,0.84
+med_hh_income,37025,Cabarrus,Not significant,High-High,Not significant,1,1,0.012
+med_hh_income,37027,Caldwell,Not significant,Not significant,Not significant,1,0,0.552
+med_hh_income,37029,Camden,Not significant,Not significant,Not significant,0.998,0.002,0.294
+med_hh_income,37031,Carteret,Not significant,Not significant,Not significant,1,0,0.877
+med_hh_income,37033,Caswell,Not significant,Not significant,Not significant,1,0,0.356
+med_hh_income,37035,Catawba,Not significant,Not significant,Not significant,1,0,0.342
+med_hh_income,37037,Chatham,Not significant,High-High,High-High,1,1,0.006
+med_hh_income,37039,Cherokee,Not significant,Not significant,Not significant,0.968,0.032,0.33
+med_hh_income,37041,Chowan,Not significant,Not significant,Not significant,0.998,0.002,0.54
+med_hh_income,37043,Clay,Not significant,Not significant,Not significant,1,0,0.398
+med_hh_income,37045,Cleveland,Not significant,Not significant,Not significant,1,0,0.617
+med_hh_income,37047,Columbus,Not significant,Not significant,Not significant,1,0,0.777
+med_hh_income,37049,Craven,Not significant,Not significant,Not significant,1,0,0.542
+med_hh_income,37051,Cumberland,Not significant,Not significant,Not significant,1,0,0.526
+med_hh_income,37053,Currituck,Not significant,High-High,Not significant,0.672,0.672,0.033
+med_hh_income,37055,Dare,Not significant,Not significant,Not significant,1,0,0.503
+med_hh_income,37057,Davidson,Not significant,Not significant,Not significant,1,0,0.563
+med_hh_income,37059,Davie,Not significant,Not significant,Not significant,1,0,0.455
+med_hh_income,37061,Duplin,Not significant,Not significant,Not significant,1,0,0.651
+med_hh_income,37063,Durham,High-High,High-High,High-High,1,1,0.006
+med_hh_income,37065,Edgecombe,Not significant,Not significant,Not significant,0.864,0.136,0.072
+med_hh_income,37067,Forsyth,Not significant,Not significant,Not significant,1,0,0.894
+med_hh_income,37069,Franklin,Not significant,Not significant,Not significant,1,0,0.512
+med_hh_income,37071,Gaston,Not significant,Not significant,Not significant,1,0,0.172
+med_hh_income,37073,Gates,Not significant,Not significant,Not significant,1,0,0.77
+med_hh_income,37075,Graham,Not significant,Not significant,Not significant,1,0,0.286
+med_hh_income,37077,Granville,Not significant,High-High,Not significant,0.274,0.274,0.058
+med_hh_income,37079,Greene,Not significant,Not significant,Not significant,1,0,0.214
+med_hh_income,37081,Guilford,Not significant,Not significant,Not significant,1,0,0.94
+med_hh_income,37083,Halifax,Not significant,Low-Low,Not significant,0.552,0.552,0.045
+med_hh_income,37085,Harnett,Not significant,High-High,Not significant,1,1,0.008
+med_hh_income,37087,Haywood,Not significant,Not significant,Not significant,1,0,0.811
+med_hh_income,37089,Henderson,Not significant,Not significant,Not significant,1,0,0.83
+med_hh_income,37091,Hertford,Not significant,Not significant,Not significant,0.75,0.25,0.104
+med_hh_income,37093,Hoke,Not significant,Not significant,Not significant,1,0,0.224
+med_hh_income,37095,Hyde,Not significant,Not significant,Not significant,1,0,0.819
+med_hh_income,37097,Iredell,Not significant,Not significant,Not significant,0.65,0.35,0.056
+med_hh_income,37099,Jackson,Not significant,Not significant,Not significant,1,0,0.708
+med_hh_income,37101,Johnston,Not significant,Not significant,Not significant,1,0,0.276
+med_hh_income,37103,Jones,Not significant,Not significant,Not significant,1,0,0.722
+med_hh_income,37105,Lee,Not significant,High-High,Not significant,0.58,0.626,0.044
+med_hh_income,37107,Lenoir,Not significant,Not significant,Not significant,1,0,0.362
+med_hh_income,37109,Lincoln,Not significant,Not significant,Not significant,1,0,0.294
+med_hh_income,37111,McDowell,Not significant,Not significant,Not significant,1,0,0.616
+med_hh_income,37113,Macon,Not significant,Not significant,Not significant,0.968,0.032,0.212
+med_hh_income,37115,Madison,Not significant,Not significant,Not significant,1,0,0.906
+med_hh_income,37117,Martin,Not significant,Low-Low,Not significant,0.994,0.994,0.01
+med_hh_income,37119,Mecklenburg,High-High,High-High,High-High,1,1,0.004
+med_hh_income,37121,Mitchell,Not significant,Not significant,Not significant,1,0,0.523
+med_hh_income,37123,Montgomery,Not significant,Not significant,Not significant,1,0,0.698
+med_hh_income,37125,Moore,Not significant,Not significant,Not significant,1,0,0.914
+med_hh_income,37127,Nash,Not significant,Not significant,Not significant,1,0,0.644
+med_hh_income,37129,New Hanover,Not significant,Not significant,Not significant,1,0,0.126
+med_hh_income,37131,Northampton,Low-Low,Low-Low,Not significant,0.998,0.998,0.007
+med_hh_income,37133,Onslow,Not significant,Not significant,Not significant,1,0,0.624
+med_hh_income,37135,Orange,Not significant,Not significant,Not significant,0.99,0.01,0.103
+med_hh_income,37137,Pamlico,Not significant,Not significant,Not significant,1,0,0.81
+med_hh_income,37139,Pasquotank,Not significant,Not significant,Not significant,1,0,0.394
+med_hh_income,37141,Pender,Not significant,Not significant,Not significant,1,0,0.498
+med_hh_income,37143,Perquimans,Not significant,Not significant,Not significant,1,0,0.772
+med_hh_income,37145,Person,Not significant,Not significant,Not significant,0.842,0.158,0.064
+med_hh_income,37147,Pitt,Not significant,Not significant,Not significant,0.652,0.348,0.058
+med_hh_income,37149,Polk,Not significant,Not significant,Not significant,1,0,0.902
+med_hh_income,37151,Randolph,Not significant,Not significant,Not significant,1,0,0.127
+med_hh_income,37153,Richmond,Not significant,Not significant,Not significant,1,0,0.641
+med_hh_income,37155,Robeson,Not significant,Low-Low,Not significant,0.834,0.834,0.03
+med_hh_income,37157,Rockingham,Not significant,Not significant,Not significant,1,0,0.711
+med_hh_income,37159,Rowan,Not significant,Not significant,Not significant,0.974,0.026,0.08
+med_hh_income,37161,Rutherford,Not significant,Not significant,Not significant,1,0,0.915
+med_hh_income,37163,Sampson,Not significant,Not significant,Not significant,1,0,0.816
+med_hh_income,37165,Scotland,Not significant,Not significant,Not significant,1,0,0.558
+med_hh_income,37167,Stanly,Not significant,Not significant,Not significant,1,0,0.364
+med_hh_income,37169,Stokes,Not significant,Not significant,Not significant,1,0,0.876
+med_hh_income,37171,Surry,Not significant,Not significant,Not significant,1,0,0.422
+med_hh_income,37173,Swain,Not significant,Not significant,Not significant,1,0,0.29
+med_hh_income,37175,Transylvania,Not significant,Not significant,Not significant,1,0,0.706
+med_hh_income,37177,Tyrrell,Not significant,Low-Low,Not significant,0.482,0.726,0.022
+med_hh_income,37179,Union,Not significant,Not significant,Not significant,1,0,0.162
+med_hh_income,37181,Vance,Not significant,Not significant,Not significant,1,0,0.722
+med_hh_income,37183,Wake,Not significant,High-High,Not significant,1,1,0.008
+med_hh_income,37185,Warren,Not significant,Not significant,Not significant,1,0,0.312
+med_hh_income,37187,Washington,Not significant,Low-Low,Not significant,0.458,0.458,0.054
+med_hh_income,37189,Watauga,Not significant,Not significant,Not significant,1,0,0.282
+med_hh_income,37191,Wayne,Not significant,Not significant,Not significant,1,0,0.303
+med_hh_income,37193,Wilkes,Not significant,Not significant,Not significant,1,0,0.474
+med_hh_income,37195,Wilson,Not significant,Not significant,Not significant,1,0,0.718
+med_hh_income,37197,Yadkin,Not significant,Not significant,Not significant,1,0,0.612
+med_hh_income,37199,Yancey,Not significant,Not significant,Not significant,1,0,0.867
+med_age,37001,Alamance,Not significant,Not significant,Not significant,1,0,0.65
+med_age,37003,Alexander,Not significant,Not significant,Not significant,1,0,0.962
+med_age,37005,Alleghany,Not significant,Not significant,Not significant,1,0,0.336
+med_age,37007,Anson,Not significant,Not significant,Not significant,1,0,0.442
+med_age,37009,Ashe,Not significant,Not significant,Not significant,1,0,0.898
+med_age,37011,Avery,Not significant,Not significant,Not significant,1,0,0.868
+med_age,37013,Beaufort,Not significant,Not significant,Not significant,1,0,0.524
+med_age,37015,Bertie,Not significant,Not significant,Not significant,1,0,0.202
+med_age,37017,Bladen,Not significant,Not significant,Not significant,0.646,0.354,0.052
+med_age,37019,Brunswick,Not significant,Not significant,Not significant,1,0,0.656
+med_age,37021,Buncombe,Not significant,Low-High,Not significant,0.202,0.202,0.056
+med_age,37023,Burke,Not significant,Not significant,Not significant,1,0,0.618
+med_age,37025,Cabarrus,Not significant,Not significant,Not significant,1,0,0.112
+med_age,37027,Caldwell,Not significant,Not significant,Not significant,1,0,0.738
+med_age,37029,Camden,Not significant,Not significant,Not significant,1,0,0.879
+med_age,37031,Carteret,Not significant,Not significant,Not significant,1,0,0.09
+med_age,37033,Caswell,Not significant,Not significant,Not significant,1,0,0.438
+med_age,37035,Catawba,Not significant,Not significant,Not significant,1,0,0.746
+med_age,37037,Chatham,Not significant,High-Low,Not significant,1,1,0.014
+med_age,37039,Cherokee,Not significant,High-High,Not significant,0.982,0.982,0.03
+med_age,37041,Chowan,Not significant,Not significant,Not significant,1,0,0.305
+med_age,37043,Clay,Not significant,High-High,Not significant,1,1,0.026
+med_age,37045,Cleveland,Not significant,Not significant,Not significant,1,0,0.908
+med_age,37047,Columbus,Not significant,Not significant,Not significant,1,0,0.43
+med_age,37049,Craven,Not significant,Not significant,Not significant,1,0,0.23
+med_age,37051,Cumberland,Not significant,Low-Low,Not significant,1,1,0.03
+med_age,37053,Currituck,Not significant,Not significant,Not significant,1,0,0.732
+med_age,37055,Dare,Not significant,Not significant,Not significant,1,0,0.697
+med_age,37057,Davidson,Not significant,Not significant,Not significant,1,0,0.278
+med_age,37059,Davie,Not significant,Not significant,Not significant,1,0,0.42
+med_age,37061,Duplin,Not significant,Not significant,Not significant,1,0,0.092
+med_age,37063,Durham,Not significant,Not significant,Not significant,1,0,0.448
+med_age,37065,Edgecombe,Not significant,Not significant,Not significant,1,0,0.408
+med_age,37067,Forsyth,Not significant,Not significant,Not significant,1,0,0.812
+med_age,37069,Franklin,Not significant,Not significant,Not significant,1,0,0.46
+med_age,37071,Gaston,Not significant,Not significant,Not significant,1,0,0.35
+med_age,37073,Gates,Not significant,Not significant,Not significant,1,0,0.695
+med_age,37075,Graham,Not significant,Not significant,Not significant,0.994,0.006,0.09
+med_age,37077,Granville,Not significant,Not significant,Not significant,1,0,0.142
+med_age,37079,Greene,Not significant,Not significant,Not significant,1,0,0.11
+med_age,37081,Guilford,Not significant,Not significant,Not significant,1,0,0.682
+med_age,37083,Halifax,Not significant,Not significant,Not significant,1,0,0.32
+med_age,37085,Harnett,Not significant,Not significant,Not significant,1,0,0.064
+med_age,37087,Haywood,Not significant,Not significant,Not significant,1,0,0.461
+med_age,37089,Henderson,Not significant,High-High,Not significant,0.98,0.98,0.04
+med_age,37091,Hertford,Not significant,Low-High,Not significant,0.49,0.49,0.05
+med_age,37093,Hoke,Not significant,Low-Low,Not significant,0.994,0.994,0.028
+med_age,37095,Hyde,Not significant,Not significant,Not significant,0.974,0.026,0.146
+med_age,37097,Iredell,Not significant,Not significant,Not significant,1,0,0.52
+med_age,37099,Jackson,Not significant,Not significant,Not significant,0.988,0.012,0.078
+med_age,37101,Johnston,Not significant,Low-Low,Not significant,0.772,0.772,0.044
+med_age,37103,Jones,Not significant,Not significant,Not significant,1,0,0.154
+med_age,37105,Lee,Not significant,Not significant,Not significant,1,0,0.694
+med_age,37107,Lenoir,Not significant,Not significant,Not significant,1,0,0.096
+med_age,37109,Lincoln,Not significant,Not significant,Not significant,1,0,0.268
+med_age,37111,McDowell,Not significant,Not significant,Not significant,1,0,0.204
+med_age,37113,Macon,Not significant,Not significant,Not significant,1,0,0.136
+med_age,37115,Madison,Not significant,Not significant,Not significant,1,0,0.33
+med_age,37117,Martin,Not significant,Not significant,Not significant,1,0,0.95
+med_age,37119,Mecklenburg,Not significant,Not significant,Not significant,1,0,0.218
+med_age,37121,Mitchell,Not significant,Not significant,Not significant,1,0,0.307
+med_age,37123,Montgomery,Not significant,Not significant,Not significant,1,0,0.481
+med_age,37125,Moore,Not significant,Low-Low,Not significant,0.754,1,0.024
+med_age,37127,Nash,Not significant,Not significant,Not significant,1,0,0.462
+med_age,37129,New Hanover,Not significant,Not significant,Not significant,1,0,0.1
+med_age,37131,Northampton,Not significant,Not significant,Not significant,1,0,0.49
+med_age,37133,Onslow,Not significant,Not significant,Not significant,1,0,0.478
+med_age,37135,Orange,Not significant,Not significant,Not significant,1,0,0.71
+med_age,37137,Pamlico,Not significant,Not significant,Not significant,1,0,0.916
+med_age,37139,Pasquotank,Not significant,Not significant,Not significant,1,0,0.382
+med_age,37141,Pender,Not significant,Not significant,Not significant,1,0,0.362
+med_age,37143,Perquimans,Not significant,Not significant,Not significant,1,0,0.526
+med_age,37145,Person,Not significant,Not significant,Not significant,1,0,0.256
+med_age,37147,Pitt,Not significant,Not significant,Not significant,1,0,0.702
+med_age,37149,Polk,Not significant,Not significant,Not significant,1,0,0.376
+med_age,37151,Randolph,Not significant,Not significant,Not significant,1,0,0.662
+med_age,37153,Richmond,Not significant,Not significant,Not significant,1,0,0.152
+med_age,37155,Robeson,Not significant,Low-Low,Not significant,0.806,0.806,0.044
+med_age,37157,Rockingham,Not significant,Not significant,Not significant,1,0,0.526
+med_age,37159,Rowan,Not significant,Not significant,Not significant,1,0,0.504
+med_age,37161,Rutherford,Not significant,Not significant,Not significant,1,0,0.194
+med_age,37163,Sampson,Not significant,Low-Low,Not significant,1,1,0.024
+med_age,37165,Scotland,Not significant,Not significant,Not significant,0.998,0.002,0.06
+med_age,37167,Stanly,Not significant,Not significant,Not significant,1,0,0.198
+med_age,37169,Stokes,Not significant,Not significant,Not significant,1,0,0.492
+med_age,37171,Surry,Not significant,Not significant,Not significant,1,0,0.384
+med_age,37173,Swain,Not significant,Not significant,Not significant,1,0,0.332
+med_age,37175,Transylvania,Not significant,Not significant,Not significant,1,0,0.652
+med_age,37177,Tyrrell,Not significant,Not significant,Not significant,1,0,0.26
+med_age,37179,Union,Not significant,Not significant,Not significant,1,0,0.104
+med_age,37181,Vance,Not significant,Not significant,Not significant,1,0,0.781
+med_age,37183,Wake,Not significant,Not significant,Not significant,1,0,0.154
+med_age,37185,Warren,Not significant,Not significant,Not significant,1,0,0.824
+med_age,37187,Washington,Not significant,Not significant,Not significant,1,0,0.183
+med_age,37189,Watauga,Not significant,Not significant,Not significant,1,0,0.222
+med_age,37191,Wayne,Not significant,Not significant,Not significant,1,0,0.214
+med_age,37193,Wilkes,Not significant,Not significant,Not significant,1,0,0.728
+med_age,37195,Wilson,Not significant,Low-Low,Not significant,0.07,0.07,0.062
+med_age,37197,Yadkin,Not significant,Not significant,Not significant,1,0,0.873
+med_age,37199,Yancey,Not significant,Not significant,Not significant,1,0,0.594
+med_home_value,37001,Alamance,Not significant,Not significant,Not significant,1,0,0.168
+med_home_value,37003,Alexander,Not significant,Not significant,Not significant,1,0,0.968
+med_home_value,37005,Alleghany,Not significant,Not significant,Not significant,1,0,0.514
+med_home_value,37007,Anson,Not significant,Not significant,Not significant,1,0,0.91
+med_home_value,37009,Ashe,Not significant,Not significant,Not significant,1,0,0.838
+med_home_value,37011,Avery,Not significant,Not significant,Not significant,1,0,0.843
+med_home_value,37013,Beaufort,Not significant,Not significant,Not significant,0.728,0.272,0.062
+med_home_value,37015,Bertie,Low-Low,Low-Low,Not significant,1,1,0.002
+med_home_value,37017,Bladen,Not significant,Not significant,Not significant,1,0,0.128
+med_home_value,37019,Brunswick,Not significant,Not significant,Not significant,1,0,0.432
+med_home_value,37021,Buncombe,Not significant,Not significant,Not significant,1,0,0.267
+med_home_value,37023,Burke,Not significant,Not significant,Not significant,1,0,0.711
+med_home_value,37025,Cabarrus,Not significant,High-High,Not significant,0.21,0.21,0.056
+med_home_value,37027,Caldwell,Not significant,Not significant,Not significant,1,0,0.946
+med_home_value,37029,Camden,Not significant,Not significant,Not significant,1,0,0.484
+med_home_value,37031,Carteret,Not significant,Not significant,Not significant,1,0,0.635
+med_home_value,37033,Caswell,Not significant,Not significant,Not significant,1,0,0.4
+med_home_value,37035,Catawba,Not significant,Not significant,Not significant,1,0,0.869
+med_home_value,37037,Chatham,Not significant,High-High,Not significant,1,1,0.01
+med_home_value,37039,Cherokee,Not significant,Not significant,Not significant,1,0,0.912
+med_home_value,37041,Chowan,Not significant,Not significant,Not significant,1,0,0.363
+med_home_value,37043,Clay,Not significant,Not significant,Not significant,1,0,0.744
+med_home_value,37045,Cleveland,Not significant,Not significant,Not significant,1,0,0.962
+med_home_value,37047,Columbus,Not significant,Not significant,Not significant,1,0,0.776
+med_home_value,37049,Craven,Not significant,Not significant,Not significant,1,0,0.452
+med_home_value,37051,Cumberland,Not significant,Not significant,Not significant,1,0,0.298
+med_home_value,37053,Currituck,Not significant,High-High,Not significant,0.986,0.986,0.024
+med_home_value,37055,Dare,Not significant,Not significant,Not significant,1,0,0.712
+med_home_value,37057,Davidson,Not significant,Not significant,Not significant,1,0,0.878
+med_home_value,37059,Davie,Not significant,Not significant,Not significant,1,0,0.8
+med_home_value,37061,Duplin,Not significant,Not significant,Not significant,1,0,0.166
+med_home_value,37063,Durham,Not significant,High-High,High-High,1,1,0.006
+med_home_value,37065,Edgecombe,Not significant,Not significant,Not significant,0.576,0.424,0.05
+med_home_value,37067,Forsyth,Not significant,Not significant,Not significant,1,0,0.604
+med_home_value,37069,Franklin,Not significant,Not significant,Not significant,1,0,0.962
+med_home_value,37071,Gaston,Not significant,Not significant,Not significant,1,0,0.264
+med_home_value,37073,Gates,Not significant,Not significant,Not significant,1,0,0.887
+med_home_value,37075,Graham,Not significant,Not significant,Not significant,1,0,0.929
+med_home_value,37077,Granville,Not significant,Not significant,Not significant,1,0,0.186
+med_home_value,37079,Greene,Not significant,Not significant,Not significant,1,0,0.17
+med_home_value,37081,Guilford,Not significant,Not significant,Not significant,1,0,0.603
+med_home_value,37083,Halifax,Not significant,Low-Low,Not significant,1,1,0.006
+med_home_value,37085,Harnett,Not significant,Not significant,Not significant,0.974,0.026,0.066
+med_home_value,37087,Haywood,Not significant,High-High,Not significant,0.976,0.976,0.028
+med_home_value,37089,Henderson,Not significant,Not significant,Not significant,0.996,0.004,0.088
+med_home_value,37091,Hertford,Not significant,Low-Low,Not significant,0.366,0.366,0.062
+med_home_value,37093,Hoke,Not significant,Not significant,Not significant,1,0,0.176
+med_home_value,37095,Hyde,Not significant,Not significant,Not significant,1,0,0.91
+med_home_value,37097,Iredell,Not significant,Not significant,Not significant,1,0,0.382
+med_home_value,37099,Jackson,Not significant,Not significant,Not significant,1,0,0.384
+med_home_value,37101,Johnston,Not significant,Not significant,Not significant,1,0,0.939
+med_home_value,37103,Jones,Not significant,Not significant,Not significant,1,0,0.558
+med_home_value,37105,Lee,Not significant,Not significant,Not significant,0.994,0.006,0.08
+med_home_value,37107,Lenoir,Not significant,Not significant,Not significant,0.122,0.878,0.038
+med_home_value,37109,Lincoln,Not significant,Not significant,Not significant,1,0,0.438
+med_home_value,37111,McDowell,Not significant,Not significant,Not significant,1,0,0.626
+med_home_value,37113,Macon,Not significant,Not significant,Not significant,1,0,0.806
+med_home_value,37115,Madison,Not significant,Not significant,Not significant,1,0,0.204
+med_home_value,37117,Martin,Not significant,Low-Low,Not significant,1,1,0.006
+med_home_value,37119,Mecklenburg,Not significant,High-High,Not significant,0.948,0.948,0.034
+med_home_value,37121,Mitchell,Not significant,Not significant,Not significant,1,0,0.93
+med_home_value,37123,Montgomery,Not significant,Not significant,Not significant,1,0,0.46
+med_home_value,37125,Moore,Not significant,Not significant,Not significant,1,0,0.594
+med_home_value,37127,Nash,Not significant,Not significant,Not significant,1,0,0.854
+med_home_value,37129,New Hanover,Not significant,Not significant,Not significant,1,0,0.174
+med_home_value,37131,Northampton,Low-Low,Low-Low,Not significant,1,1,0.004
+med_home_value,37133,Onslow,Not significant,Not significant,Not significant,1,0,0.868
+med_home_value,37135,Orange,Not significant,Not significant,Not significant,1,0,0.16
+med_home_value,37137,Pamlico,Not significant,Not significant,Not significant,1,0,0.824
+med_home_value,37139,Pasquotank,Not significant,Not significant,Not significant,1,0,0.711
+med_home_value,37141,Pender,Not significant,Not significant,Not significant,1,0,0.662
+med_home_value,37143,Perquimans,Not significant,Not significant,Not significant,1,0,0.79
+med_home_value,37145,Person,Not significant,Not significant,Not significant,1,0,0.08
+med_home_value,37147,Pitt,Not significant,Low-Low,Not significant,1,1,0.008
+med_home_value,37149,Polk,Not significant,Not significant,Not significant,1,0,0.518
+med_home_value,37151,Randolph,Not significant,Not significant,Not significant,1,0,0.194
+med_home_value,37153,Richmond,Not significant,Not significant,Not significant,1,0,0.364
+med_home_value,37155,Robeson,Not significant,Low-Low,Not significant,0.728,0.728,0.044
+med_home_value,37157,Rockingham,Not significant,Not significant,Not significant,1,0,0.816
+med_home_value,37159,Rowan,Not significant,Not significant,Not significant,1,0,0.315
+med_home_value,37161,Rutherford,Not significant,Not significant,Not significant,1,0,0.35
+med_home_value,37163,Sampson,Not significant,Not significant,Not significant,1,0,0.506
+med_home_value,37165,Scotland,Not significant,Not significant,Not significant,1,0,0.43
+med_home_value,37167,Stanly,Not significant,Not significant,Not significant,1,0,0.958
+med_home_value,37169,Stokes,Not significant,Not significant,Not significant,1,0,0.726
+med_home_value,37171,Surry,Not significant,Not significant,Not significant,1,0,0.482
+med_home_value,37173,Swain,Not significant,Not significant,Not significant,1,0,0.791
+med_home_value,37175,Transylvania,Not significant,High-High,Not significant,0.48,0.48,0.05
+med_home_value,37177,Tyrrell,Not significant,Low-Low,Not significant,0.84,0.848,0.03
+med_home_value,37179,Union,Not significant,Not significant,Not significant,1,0,0.3
+med_home_value,37181,Vance,Not significant,Not significant,Not significant,1,0,0.812
+med_home_value,37183,Wake,Not significant,Not significant,Not significant,0.998,0.002,0.074
+med_home_value,37185,Warren,Not significant,Not significant,Not significant,0.96,0.04,0.07
+med_home_value,37187,Washington,Not significant,Low-Low,Not significant,1,1,0.008
+med_home_value,37189,Watauga,Not significant,Not significant,Not significant,1,0,0.818
+med_home_value,37191,Wayne,Not significant,Low-Low,Not significant,0.994,0.994,0.024
+med_home_value,37193,Wilkes,Not significant,Not significant,Not significant,1,0,0.947
+med_home_value,37195,Wilson,Not significant,Not significant,Not significant,1,0,0.24
+med_home_value,37197,Yadkin,Not significant,Not significant,Not significant,1,0,0.898
+med_home_value,37199,Yancey,Not significant,Not significant,Not significant,1,0,0.386
