@@ -2,12 +2,16 @@
 # Question: is there statistically defensible spatial structure in NC county socioeconomic
 # conditions, has it changed over time, and does it survive ACS sampling error?
 #
-#  A. Global Moran's I (permutation inference) by indicator and year
-#  B. Local Moran's I (LISA) with conditional-permutation p-values and FDR correction
-#  C. Cluster persistence across the three ACS windows
-#  D. Margin-of-error stability: re-draw each county estimate from its ACS sampling distribution
-#     and measure how often each county keeps its cluster label and how much global I varies
-#  E. Sensitivity of global Moran's I to the spatial-weights definition
+#  A0. Estimate reliability: ACS coefficient-of-variation tiers
+#  A.  Global Moran's I (permutation inference) by indicator and year
+#  B.  Local Moran's I (LISA) with conditional-permutation p-values and FDR correction
+#  C.  Cluster persistence across the three ACS windows
+#  D.  Margin-of-error stability: re-draw each county estimate from its ACS sampling distribution
+#      and measure how often each county keeps its cluster label and how much global I varies
+#  D1. Evidence grade: synthesis of reliability tier, FDR significance, and MOE stability
+#  E.  Sensitivity of global Moran's I to the spatial-weights definition
+#  F.  Spatial correlogram: Moran's I by contiguity order (reach of the spatial pattern)
+#  G.  Bivariate LISA: cross-indicator spatial association for three key pairs
 
 source("pipeline/R/00_config.R")
 source("pipeline/R/helpers.R")
@@ -19,6 +23,41 @@ lw   <- build_queen_lw(geom)
 message("Queen contiguity: ", length(lw$neighbours), " counties, ",
         sum(card(lw$neighbours) == 0), " isolates, mean neighbours = ",
         round(mean(card(lw$neighbours)), 2))
+
+# ---- A0. Estimate reliability: ACS coefficient-of-variation tiers ---------------
+# CV = se / |estimate|, where se = MOE / 1.645 (ACS 90 % CI).
+# Tiers follow the Census Bureau's own guidance:
+#   Reliable        CV < 12 %
+#   Use with caution  12 – 40 %
+#   Unreliable      CV > 40 %
+message("A0. Computing CV reliability tiers...")
+cv_tbl <- expand_grid(year = YEARS, indicator = INDICATORS$name) %>%
+  mutate(res = map2(year, indicator, function(yr, v) {
+    d   <- ind[ind$year == yr, ]
+    d   <- d[match(geom$GEOID, d$GEOID), ]
+    E   <- d[[v]]
+    moe <- d[[paste0(v, "_moe")]]
+    tibble(
+      GEOID    = geom$GEOID,
+      NAME     = geom$NAME,
+      estimate = E,
+      moe      = moe,
+      cv_pct   = abs(moe / Z90 / E) * 100,
+      cv_tier  = cv_tier(E, moe)
+    )
+  })) %>%
+  unnest(res)
+write_csv(cv_tbl, "outputs/tables/cv_tiers.csv")
+
+# Summary: share of counties by tier per indicator/window
+cv_summary <- cv_tbl %>%
+  count(year, indicator, cv_tier) %>%
+  group_by(year, indicator) %>%
+  mutate(share = n / sum(n)) %>%
+  ungroup() %>%
+  left_join(INDICATORS %>% select(indicator = name, label), by = "indicator")
+write_csv(cv_summary, "outputs/tables/cv_tier_summary.csv")
+print(cv_summary %>% filter(cv_tier == "Unreliable") %>% arrange(year, indicator))
 
 # ---- A. Global Moran's I -------------------------------------------------------
 set.seed(SEED)
@@ -97,7 +136,7 @@ persistence <- local_tbl %>%
   arrange(indicator, desc(n_windows), cluster_fdr, NAME)
 write_csv(persistence, "outputs/tables/cluster_persistence.csv")
 
-# ---- D. Margin-of-error stability (2022 window) ---------------------------------
+# ---- D. Margin-of-error stability (every window) -------------------------------
 # For each draw, every county's value is resampled from Normal(estimate, (MOE/1.645)^2)
 # (ACS MOEs are 90% intervals), clipped to [0, 1] for rates, and LISA is recomputed with
 # conditional permutation (STAB_PERM permutations).
@@ -139,7 +178,7 @@ mc_stability <- function(v, yr = max(YEARS), nsim = N_SIM) {
   }
   list(
     county = tibble(
-      indicator = v, GEOID = geom$GEOID, NAME = geom$NAME,
+      year = yr, indicator = v, GEOID = geom$GEOID, NAME = geom$NAME,
       cluster_headline_fdr = base_fdr,
       cluster_headline_raw = base_raw,
       cluster_analytic     = analytic_base,
@@ -148,7 +187,7 @@ mc_stability <- function(v, yr = max(YEARS), nsim = N_SIM) {
       median_perm_p = apply(sim_p, 1, median)
     ),
     global = tibble(
-      indicator = v,
+      year = yr, indicator = v,
       moran_I_point = moran(E, lw, n, Szero(lw), zero.policy = TRUE)$I,
       moran_I_sim_mean = mean(sim_I),
       moran_I_sim_p05 = unname(quantile(sim_I, 0.05)),
@@ -157,8 +196,13 @@ mc_stability <- function(v, yr = max(YEARS), nsim = N_SIM) {
   )
 }
 
-set.seed(SEED)
-stab <- map(INDICATORS$name, mc_stability)
+# The seed is reset for each window so the 2022 results are identical whether or not the
+# earlier windows are run.
+stab <- list()
+for (yr in YEARS) {
+  set.seed(SEED)
+  stab <- c(stab, map(INDICATORS$name, mc_stability, yr = yr))
+}
 stab_county <- map_dfr(stab, "county")
 stab_global <- map_dfr(stab, "global") %>% left_join(INDICATORS %>% select(indicator = name, label), by = "indicator")
 write_csv(stab_county, "outputs/tables/moe_cluster_stability_county.csv")
@@ -167,24 +211,24 @@ print(stab_global)
 
 # Stability of the clusters that are significant (FDR) in the headline results
 stab_sig <- stab_county %>% filter(cluster_headline_fdr != "Not significant") %>%
-  arrange(indicator, desc(share_draws_same_raw_class))
+  arrange(year, indicator, desc(share_draws_same_raw_class))
 write_csv(stab_sig, "outputs/tables/moe_stability_of_headline_clusters.csv")
 print(stab_sig, n = Inf)
 
 # Stability of ALL nominally significant (unadjusted) clusters, for context
 stab_raw <- stab_county %>% filter(cluster_headline_raw != "Not significant") %>%
-  arrange(indicator, desc(share_draws_same_raw_class))
+  arrange(year, indicator, desc(share_draws_same_raw_class))
 write_csv(stab_raw, "outputs/tables/moe_stability_of_unadjusted_clusters.csv")
 
 # Agreement between permutation-based and analytic classification (transparency check)
-agree <- stab_county %>% group_by(indicator) %>%
+agree <- stab_county %>% group_by(year, indicator) %>%
   summarise(agreement_perm_vs_analytic = mean(cluster_headline_fdr == cluster_analytic), .groups = "drop")
 write_csv(agree, "outputs/tables/perm_vs_analytic_agreement.csv")
 print(agree)
 
 for (v in INDICATORS$name) {
   lab <- INDICATORS$label[INDICATORS$name == v]
-  d <- geom %>% left_join(stab_county %>% filter(indicator == v), by = c("GEOID", "NAME"))
+  d <- geom %>% left_join(stab_county %>% filter(indicator == v, year == max(YEARS)), by = c("GEOID", "NAME"))
   p <- ggplot(d) +
     geom_sf(aes(fill = share_draws_raw_significant), colour = "white", linewidth = 0.15) +
     scale_fill_viridis_c(limits = c(0, 1), name = "Share of draws\nnominally significant") +
@@ -193,6 +237,36 @@ for (v in INDICATORS$name) {
     theme_map()
   ggsave(sprintf("outputs/figures/stability_%s_%d.png", v, max(YEARS)), p, width = 8, height = 4.5, dpi = 200)
 }
+
+# ---- D1. Evidence grade: reliability × FDR × stability -------------------------
+# Each county × indicator × window gets one of five ordered grades:
+#   Unreliable estimate  CV > 40 %: the estimate is too noisy to classify
+#   No cluster           estimate usable but no spatial association detected
+#   Nominal only         significant at unadjusted p < 0.05 but not after FDR
+#   FDR-significant      passes Benjamini-Hochberg correction
+#   Robust               FDR-significant AND same label under analytic test AND ≥ 90 % stable
+message("D1. Computing evidence grades...")
+evidence_tbl <- cv_tbl %>%
+  select(year, indicator, GEOID, NAME, cv_tier) %>%
+  left_join(local_tbl %>% select(year, indicator, GEOID, cluster_raw, cluster_fdr),
+            by = c("year", "indicator", "GEOID")) %>%
+  left_join(stab_county %>% select(year, indicator, GEOID, cluster_analytic,
+                                    share_draws_same_raw_class),
+            by = c("year", "indicator", "GEOID")) %>%
+  mutate(
+    grade = case_when(
+      cv_tier == "Unreliable"  ~ "Unreliable estimate",
+      cluster_fdr == "Not significant" & cluster_raw == "Not significant" ~ "No cluster",
+      cluster_fdr == "Not significant" ~ "Nominal only",
+      cluster_analytic == as.character(cluster_fdr) &
+        share_draws_same_raw_class >= 0.90 ~ "Robust",
+      TRUE ~ "FDR-significant"
+    ),
+    grade = factor(grade, levels = GRADE_LEVELS)
+  )
+write_csv(evidence_tbl, "outputs/tables/evidence_grades.csv")
+message("Evidence grade distribution:")
+print(evidence_tbl %>% count(grade) %>% arrange(desc(n)))
 
 # ---- E. Sensitivity to the spatial-weights definition ----------------------------
 lw_knn5 <- build_knn_lw(geom, 5)
@@ -206,5 +280,99 @@ sens <- expand_grid(indicator = INDICATORS$name, weights = c("queen", "knn5", "k
   })) %>% unnest(res)
 write_csv(sens, "outputs/tables/global_moran_weights_sensitivity.csv")
 print(sens)
+
+# ---- F. Spatial correlogram: Moran's I by contiguity order ----------------------
+# Shows HOW FAR spatial dependence reaches.  At order k, a county's "neighbours"
+# are those connected by exactly k queen-contiguity steps (non-cumulative).
+# This answers: is the pattern local (drops off fast) or regional (persists to k = 4-5)?
+# We use 999 permutations here (not N_PERM = 9999) for speed; patterns at k > 1 are
+# typically wider and the null distribution is easier to approximate.
+message("F. Computing spatial correlogram (contiguity orders 1–5)...")
+set.seed(SEED)
+MAX_LAG <- 5
+corro <- expand_grid(year = YEARS, indicator = INDICATORS$name, order = seq_len(MAX_LAG)) %>%
+  mutate(res = pmap(list(year, indicator, order), function(yr, v, k) {
+    x    <- get_x(ind, geom, yr, v)
+    lw_k <- build_higher_order_lw(lw, k)
+    n_nb <- sum(card(lw_k$neighbours) > 0)    # counties with at least one order-k neighbour
+    if (n_nb < 3L) {
+      return(tibble(moran_I = NA_real_, p_value = NA_real_, n_pairs = 0L))
+    }
+    mc <- moran.mc(x, lw_k, nsim = 999, zero.policy = TRUE)
+    tibble(moran_I = unname(mc$statistic), p_value = mc$p.value,
+           n_pairs = as.integer(n_nb))
+  })) %>%
+  unnest(res) %>%
+  left_join(INDICATORS %>% select(indicator = name, label), by = "indicator")
+write_csv(corro, "outputs/tables/correlogram.csv")
+
+p_corro <- ggplot(corro %>% filter(!is.na(moran_I)),
+                  aes(order, moran_I, group = label, colour = label)) +
+  geom_hline(yintercept = 0, colour = "grey70", linetype = "dashed") +
+  geom_line(linewidth = 0.8) +
+  geom_point(aes(shape = p_value < ALPHA), size = 2.5) +
+  scale_shape_manual(values = c(`TRUE` = 16, `FALSE` = 1), name = paste0("p < ", ALPHA)) +
+  scale_x_continuous(breaks = seq_len(MAX_LAG)) +
+  facet_wrap(~factor(year), nrow = 1) +
+  labs(x = "Contiguity order", y = "Global Moran's I", colour = NULL,
+       title = "Spatial correlogram: how far does the clustering reach?",
+       subtitle = "Queen contiguity; order k = counties exactly k steps away") +
+  theme_minimal(base_size = 11)
+ggsave("outputs/figures/correlogram.png", p_corro, width = 12, height = 4.5, dpi = 200)
+print(corro %>% arrange(indicator, year, order) %>% select(-label))
+
+# ---- G. Bivariate LISA: cross-indicator spatial association ----------------------
+# Tests whether a county's value of indicator X correlates with its NEIGHBOURS'
+# average value of indicator Y.  Uses localmoran_bv() from spdep (>= 1.2-1).
+# Auto-generated: every unordered pair of indicators in INDICATORS$name, so the
+# app's Bivariate LISA panel always offers the full set with no hardcoded list
+# to maintain. Exclude a name here only if it is a log-transformed duplicate of
+# another indicator already in the set (keep this in sync with _BVLISA_EXCLUDE
+# in app/analysis.py).
+BV_EXCLUDE <- character(0)
+bv_candidates <- setdiff(INDICATORS$name, BV_EXCLUDE)
+bv_pair_mat <- combn(bv_candidates, 2)
+BV_PAIRS <- lapply(seq_len(ncol(bv_pair_mat)), function(i) {
+  x <- bv_pair_mat[1, i]; y <- bv_pair_mat[2, i]
+  list(x = x, y = y,
+       label = paste0(INDICATORS$label[INDICATORS$name == x], " (focal) ~ ",
+                       INDICATORS$label[INDICATORS$name == y], " (lag)"))
+})
+message("G. Computing bivariate LISA for ", length(BV_PAIRS), " pairs × ", length(YEARS), " windows...")
+set.seed(SEED)
+bv_tbl <- map_dfr(BV_PAIRS, function(pair) {
+  map_dfr(YEARS, function(yr) {
+    xi <- get_x(ind, geom, yr, pair$x)
+    xj <- get_x(ind, geom, yr, pair$y)
+    # localmoran_bv: focal variable xi, spatial lag of xj
+    res   <- localmoran_bv(xi, xj, lw, nsim = N_PERM, zero.policy = TRUE, iseed = SEED)
+    p_col <- grep("Pr\\(z", colnames(res), value = TRUE)[1]
+    p     <- as.numeric(res[, p_col])
+    p_adj <- p.adjust(p, method = "fdr")
+    zi    <- as.numeric(scale(xi))
+    zj    <- as.numeric(scale(xj))
+    lag_zj <- lag.listw(lw, zj, zero.policy = TRUE)
+    bv_quad <- dplyr::case_when(
+      zi >= 0 & lag_zj >= 0 ~ "High-High",
+      zi <  0 & lag_zj <  0 ~ "Low-Low",
+      zi >= 0 & lag_zj <  0 ~ "High-Low",
+      TRUE                  ~ "Low-High"
+    )
+    tibble(
+      year = yr, x_var = pair$x, y_var = pair$y, pair_label = pair$label,
+      GEOID = geom$GEOID, NAME = geom$NAME,
+      local_I     = as.numeric(res[, 1]),
+      p_value     = p,
+      p_fdr       = p_adj,
+      quadrant    = bv_quad,
+      cluster_raw = factor(ifelse(p     < ALPHA, bv_quad, "Not significant"), levels = CLUSTER_LEVELS),
+      cluster_fdr = factor(ifelse(p_adj < ALPHA, bv_quad, "Not significant"), levels = CLUSTER_LEVELS)
+    )
+  })
+})
+write_csv(bv_tbl, "outputs/tables/bivariate_lisa.csv")
+bv_counts <- bv_tbl %>% filter(cluster_fdr != "Not significant") %>%
+  count(year, pair_label, cluster_fdr) %>% arrange(pair_label, year)
+print(bv_counts, n = Inf)
 
 message("02_spatial_structure.R complete.")

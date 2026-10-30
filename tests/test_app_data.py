@@ -89,6 +89,15 @@ def test_stability_shares_are_probabilities(data):
         s["cluster_headline_raw"] != "Not significant", True).all()
 
 
+def test_stability_covers_every_window(data):
+    s, loc = data["stab"], data["local"]
+    assert set(s["year"]) == set(loc["year"])
+    assert len(s) == 100 * len(set(s["year"])) * s["indicator"].nunique()
+    # the stability table's headline labels agree with the local-cluster table for the same window
+    m = s.merge(loc, on=["GEOID", "indicator", "year"])
+    assert (m["cluster_headline_fdr"] == m["cluster_fdr"].astype(str)).all()
+
+
 def test_python_moran_matches_r_for_every_indicator_and_window(data):
     """Cross-language check: Moran's I recomputed in pandas from the neighbour list equals the R result."""
     ind, nb, glob = data["ind"], data["nb"], data["glob"]

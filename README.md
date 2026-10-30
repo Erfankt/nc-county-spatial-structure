@@ -13,8 +13,8 @@ An R pipeline computes spatial autocorrelation (global and local Moran's I), che
 ACS 5-year estimates, three non-overlapping windows (2008-12, 2013-17, 2018-22), six indicators, 100 counties.
 
 - **Broad regional gradients, not sharp hot spots.** Every indicator is significantly clustered in every window (global Moran's I between 0.17 and 0.48). But after Benjamini-Hochberg correction for 100 simultaneous tests, only 9 county-level clusters remain in 2018-22, against 87 nominally significant before correction.
-- **Only two clusters pass all three checks** (significant after FDR correction, same label under the analytic test, and stable in at least 90% of draws resampled within the ACS margins of error): the high-income clusters in Durham and Mecklenburg counties.
-- **Margins of error matter most for unemployment.** Its median relative margin of error is 23% of the estimate (up to 95% for some small counties), and none of its 16 nominally significant clusters is stable under resampling.
+- **Only two clusters pass all three checks in 2018-22** (significant after FDR correction, same label under the analytic test, and stable in at least 90% of draws resampled within the ACS margins of error): the high-income clusters in Durham and Mecklenburg counties. The same check on the earlier windows finds one robust cluster in 2008-12 (a high-unemployment cluster in Martin County) and none in 2013-17, so robust clusters are rare in every window.
+- **Margins of error matter most for unemployment.** Its median relative margin of error is 23% of the estimate (up to 95% for some small counties), and none of its 16 nominally significant clusters in 2018-22 is stable under resampling.
 - **Clustering is changing.** Poverty's Moran's I fell from 0.43 to 0.33 and unemployment's from 0.37 to 0.27 between the first and last window; median home value rose from 0.35 to 0.41.
 - **Spatial regression models add little for poverty.** Residual Moran's I after OLS is 0.07 (p = 0.08) and OLS has the lowest AIC, so most of the clustering reflects where county characteristics are, not extra spillover between neighbours.
 

@@ -56,6 +56,21 @@ moe_summary <- INDICATORS %>%
 write_csv(moe_summary, "app/data/acs_moe_summary.csv")
 write_csv(tab("perm_vs_analytic_agreement.csv"),      "app/data/perm_vs_analytic_agreement.csv")
 
+# ---- CV tiers, evidence grades, correlogram, bivariate LISA -------------------------
+write_csv(tab("cv_tiers.csv")       %>% select(year, indicator, GEOID, NAME, cv_pct, cv_tier),
+          "app/data/cv_tiers.csv")
+write_csv(tab("cv_tier_summary.csv"), "app/data/cv_tier_summary.csv")
+write_csv(tab("evidence_grades.csv") %>%
+            select(year, indicator, GEOID, NAME, cv_tier, cluster_raw, cluster_fdr,
+                   cluster_analytic, share_draws_same_raw_class, grade),
+          "app/data/evidence_grades.csv")
+write_csv(tab("correlogram.csv") %>% select(year, indicator, label, order, moran_I, p_value, n_pairs),
+          "app/data/correlogram.csv")
+write_csv(tab("bivariate_lisa.csv") %>%
+            select(year, x_var, y_var, pair_label, GEOID, NAME,
+                   local_I, p_value, p_fdr, quadrant, cluster_raw, cluster_fdr),
+          "app/data/bivariate_lisa.csv")
+
 # ---- Models ------------------------------------------------------------------------------
 write_csv(tab("model_comparison.csv"),                "app/data/model_comparison.csv")
 write_csv(tab("model_residual_diagnostics.csv"),      "app/data/model_diagnostics.csv")
