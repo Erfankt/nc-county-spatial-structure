@@ -18,11 +18,115 @@ sys.path.insert(0, str(Path(__file__).parent))
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+import plotly.io as pio
 import streamlit as st
 
 import analysis as an
 
-st.set_page_config(page_title="NC County Spatial Structure", page_icon=None, layout="wide")
+st.set_page_config(page_title="NC County Spatial Structure", page_icon="\U0001f9ed", layout="wide")
+
+
+# -------------------------------------------------------------- theme ("Field Atlas")
+# A distinct editorial-cartography look: parchment background, deep pine headings,
+# a clay/terracotta accent, serif display type over a plain sans body. Purely
+# cosmetic -- no functional change to any widget, chart, or data flow below.
+_THEME_CSS = """
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --fa-ink: #2b2420;
+  --fa-paper: #faf6f0;
+  --fa-paper-deep: #f0e8d9;
+  --fa-pine: #16423c;
+  --fa-pine-light: #2f6659;
+  --fa-clay: #c2410c;
+  --fa-clay-light: #e08a52;
+  --fa-rule: #d8cdb8;
+  --fa-sidebar-text: #f3ede0;
+}
+
+html, body, .stApp { background-color: var(--fa-paper) !important; }
+.stApp, .stApp p, .stApp li, .stApp span, .stApp div { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+
+h1, h2, h3 { font-family: 'Source Serif 4', Georgia, serif !important; color: var(--fa-pine) !important; letter-spacing: -0.01em; }
+[data-testid="stMarkdownContainer"] h3 { border-left: 4px solid var(--fa-clay); padding-left: 0.6rem; margin-top: 0.3rem; }
+
+.fa-kicker, .fa-sidebar-kicker {
+  font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--fa-clay); margin-bottom: 0.15rem;
+}
+.fa-sidebar-kicker { color: var(--fa-clay-light); font-size: 0.68rem; }
+.fa-hero h1 { margin: 0 0 0.3rem 0 !important; font-size: 2.05rem !important; line-height: 1.18; }
+.fa-hero p { color: #6b5f4f; font-size: 1rem; max-width: 68ch; margin: 0 0 0.6rem 0; }
+.fa-hero-rule { height: 3px; width: 64px; background: var(--fa-clay); margin: 0.35rem 0 1.2rem 0; border-radius: 2px; }
+
+/* ---- Sidebar: dark pine panel, cream text for labels/headings, light cards for inputs ---- */
+[data-testid="stSidebar"] { background-color: var(--fa-pine) !important; }
+[data-testid="stSidebar"] h1, [data-testid="stSidebar"] h2, [data-testid="stSidebar"] h3 { color: var(--fa-sidebar-text) !important; }
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p { color: var(--fa-sidebar-text) !important; }
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] label { color: var(--fa-sidebar-text) !important; }
+[data-testid="stSidebar"] [data-testid="stCaptionContainer"] { color: #cddbd3 !important; }
+[data-testid="stSidebar"] [data-testid="stRadio"] label,
+[data-testid="stSidebar"] [data-testid="stCheckbox"] label { color: var(--fa-sidebar-text) !important; }
+[data-testid="stSidebar"] hr { border-color: rgba(243,237,224,0.25) !important; }
+
+/* ---- Tabs ---- */
+[data-baseweb="tab-list"] { gap: 1.6rem; border-bottom: 1px solid var(--fa-rule); }
+[data-baseweb="tab"] { font-family: 'Source Serif 4', Georgia, serif; font-size: 1.02rem; }
+[data-baseweb="tab"][aria-selected="true"] { color: var(--fa-clay) !important; font-weight: 600; }
+
+/* ---- Buttons ---- */
+.stButton > button, .stDownloadButton > button {
+  background-color: var(--fa-clay); color: #fff8f0; border: 1px solid var(--fa-clay);
+  border-radius: 6px; font-weight: 600;
+}
+.stButton > button:hover, .stDownloadButton > button:hover {
+  background-color: var(--fa-clay-light); border-color: var(--fa-clay-light); color: #fff;
+}
+.stButton > button:disabled, .stDownloadButton > button:disabled {
+  background-color: #c9bfa8; border-color: #c9bfa8; color: #fff; opacity: 0.75;
+}
+
+/* ---- Expander: a light card regardless of what it sits on ---- */
+[data-testid="stExpander"] { border: 1px solid var(--fa-rule) !important; border-radius: 10px !important; overflow: hidden; }
+
+/* ---- Dataframes / tables ---- */
+[data-testid="stDataFrame"] { border: 1px solid var(--fa-rule); border-radius: 8px; overflow: hidden; }
+
+/* ---- Captions (main area) ---- */
+[data-testid="stCaptionContainer"] { color: #6b5f4f !important; }
+
+/* ---- Code block (pipeline log) ---- */
+.stCodeBlock, pre { border-radius: 8px !important; }
+</style>
+"""
+st.markdown(_THEME_CSS, unsafe_allow_html=True)
+
+# Matching Plotly template: same palette/typography, applied to every chart in the app.
+# Explicit color maps elsewhere (cluster/grade/CV-tier colors, the coefficient palette)
+# are untouched -- this only sets fonts, backgrounds, gridlines, and the default
+# categorical color cycle for charts that don't specify their own colors.
+_FA_COLORWAY = [
+    "#16423c", "#c2410c", "#5b4b8a", "#b08900", "#2f6659", "#8c3b3b",
+    "#3d6e8c", "#7a7a52", "#9a4f96", "#4f7942", "#a65b3a", "#4a5759",
+]
+pio.templates["fieldatlas"] = go.layout.Template(
+    layout=go.Layout(
+        font=dict(family="Inter, -apple-system, sans-serif", color="#2b2420", size=13),
+        title=dict(font=dict(family="Source Serif 4, Georgia, serif", color="#16423c", size=16)),
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        colorway=_FA_COLORWAY,
+        xaxis=dict(gridcolor="#e7ddc9", linecolor="#d8cdb8", zerolinecolor="#d8cdb8"),
+        yaxis=dict(gridcolor="#e7ddc9", linecolor="#d8cdb8", zerolinecolor="#d8cdb8"),
+        legend=dict(bgcolor="rgba(0,0,0,0)"),
+        hoverlabel=dict(bgcolor="#faf6f0", bordercolor="#c2410c",
+                        font=dict(color="#2b2420", family="Inter, sans-serif")),
+    )
+)
+pio.templates.default = "fieldatlas"
 
 
 # ------------------------------------------------------------------ data
@@ -95,8 +199,14 @@ def window(y: int) -> str:
 
 
 # --------------------------------------------------------------- sidebar
-st.sidebar.title("NC County Spatial Structure")
-st.sidebar.caption("100 counties, ACS 5-year estimates")
+st.sidebar.markdown(
+    """
+    <div class="fa-sidebar-kicker">Field Atlas</div>
+    <h1 style="margin:0 0 0.1rem 0; color:#f3ede0;">NC County Spatial Structure</h1>
+    <p style="color:#cddbd3; font-size:0.85rem; margin:0 0 0.6rem 0;">100 counties &middot; ACS 5-year estimates</p>
+    """,
+    unsafe_allow_html=True,
+)
 indicator = st.sidebar.selectbox("Indicator", list(LABEL), format_func=LABEL.get)
 year = st.sidebar.radio("ACS window", WINDOWS, index=len(WINDOWS) - 1, format_func=window)
 _view_opts = (["Evidence grade"] if D["evidence"] is not None else []) + \
@@ -172,10 +282,17 @@ with st.sidebar.expander("Refresh Census data"):
                 st.error(f"Pipeline exited with code {proc.returncode}. See the log above.")
 
 # ------------------------------------------------------------- tabs
-st.title("Where do North Carolina counties cluster, and how much of it is real?")
-st.caption(
-    "Spatial autocorrelation of county socioeconomic indicators, with multiple-testing correction and "
-    "a check against ACS sampling error."
+st.markdown(
+    """
+    <div class="fa-hero">
+      <div class="fa-kicker">North Carolina &middot; County-Level Analysis</div>
+      <h1>Where do North Carolina counties cluster, and how much of it is real?</h1>
+      <p>Spatial autocorrelation of county socioeconomic indicators, with multiple-testing correction and
+      a check against ACS sampling error.</p>
+      <div class="fa-hero-rule"></div>
+    </div>
+    """,
+    unsafe_allow_html=True,
 )
 tab_map, tab_time, tab_rob, tab_model, tab_about = st.tabs(
     ["Map explorer", "Trends", "Robustness", "Models", "Method and caveats"]
