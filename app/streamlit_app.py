@@ -49,6 +49,16 @@ _THEME_CSS = """
 html, body, .stApp { background-color: var(--fa-paper) !important; }
 .stApp, .stApp p, .stApp li, .stApp span, .stApp div { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
 
+/* Material icon glyphs (expander chevrons, select/multiselect arrows, etc.) must keep
+   their own icon font -- the broad font-family rule above otherwise turns the glyph
+   ligature into literal text like "arrow_down" stacked on top of the label. */
+[data-testid="stIconMaterial"],
+[class*="material-symbols"],
+[class*="MaterialSymbols"] {
+  font-family: 'Material Symbols Rounded', 'Material Symbols Outlined', 'Material Icons' !important;
+  font-weight: normal !important;
+}
+
 h1, h2, h3 { font-family: 'Source Serif 4', Georgia, serif !important; color: var(--fa-pine) !important; letter-spacing: -0.01em; }
 [data-testid="stMarkdownContainer"] h3 { border-left: 4px solid var(--fa-clay); padding-left: 0.6rem; margin-top: 0.3rem; }
 
