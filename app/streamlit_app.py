@@ -229,9 +229,8 @@ _view_opts = (["Evidence grade"] if D["evidence"] is not None else []) + \
 st.markdown(
     """
     <div class="fa-hero">
-      <div class="fa-kicker">North Carolina &middot; County-Level Analysis</div>
       <h1>Where do North Carolina counties cluster?</h1>
-      <p>Spatial autocorrelation of county socioeconomic indicators, with multiple-testing correction and a check against ACS sampling error.</p>
+      <p>Spatial autocorrelation of county socioeconomic indicators, with multiple-testing correction.</p>
       <div class="fa-hero-rule"></div>
     </div>
     """,
@@ -261,56 +260,59 @@ with tab_map:
         f"Built {META['built_at']}. {P['n_permutations']:,} permutations, seed {P['seed']}. "
         "Data: U.S. Census Bureau, American Community Survey."
     )
-    with st.expander("Refresh Census data"):
-        st.caption(
-            "Re-pulls every ACS variable from the Census API and rebuilds all files in "
-            "app/data/. Local only \u2014 needs R installed on this machine; a Streamlit "
-            "Community Cloud deployment has no R runtime, so this control won't work there."
-        )
-        _repo_root = an.DATA_DIR.parent.parent  # app/data -> app -> repo root
-        _auto_rscript = _find_rscript()
-        rscript_path = _auto_rscript or st.text_input(
-            "Rscript.exe path (not found automatically)",
-            placeholder=r"C:\Program Files\R\R-4.4.1\bin\Rscript.exe",
-            key="rscript_path_input",
-        )
-        api_key = st.text_input(
-            "Census API key", type="password",
-            value=os.environ.get("CENSUS_API_KEY", ""),
-            help="Free key: https://api.census.gov/data/key_signup.html. "
-                 "Used only for this run, never written to disk or logged.",
-            key="census_api_key_input",
-        )
-        confirm = st.checkbox(
-            "I understand this calls the Census API and can take 10\u201330 minutes "
-            "(153 indicator pairs \u00d7 3 ACS windows for bivariate LISA alone)"
-        )
-        if st.button("Run pipeline now", disabled=not (rscript_path and api_key and confirm)):
-            env = os.environ.copy()
-            env["CENSUS_API_KEY"] = api_key
-            log_lines: list[str] = []
-            log_box = st.empty()
-            log_box.code("Starting pipeline/run_all.R ...")
-            try:
-                proc = subprocess.Popen(
-                    [rscript_path, "pipeline/run_all.R"],
-                    cwd=str(_repo_root), env=env,
-                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                    text=True, bufsize=1,
-                )
-                for line in proc.stdout:
-                    log_lines.append(line.rstrip("\n"))
-                    log_box.code("\n".join(log_lines[-200:]) or "(no output yet)")
-                proc.wait()
-            except FileNotFoundError:
-                st.error(f"Couldn't run '{rscript_path}' \u2014 check the path above.")
-            else:
-                if proc.returncode == 0:
-                    st.success("Pipeline finished. Reloading data\u2026")
-                    load_all.clear()
-                    st.rerun()
+    # The pipeline runner (and the Census API key field it needs) only ever renders
+    # when an R installation is actually found on this machine -- i.e. the author's
+    # own computer. A Streamlit Community Cloud deployment has no R runtime, so
+    # _find_rscript() always returns None there, and visitors see a plain note
+    # instead: no button, no API key field, nothing to run.
+    _auto_rscript = _find_rscript()
+    if _auto_rscript:
+        with st.expander("Refresh Census data (author only — runs locally)"):
+            st.caption(
+                "Re-pulls every ACS variable from the Census API and rebuilds all files in "
+                "app/data/. This only works because R is installed on this machine; it never "
+                "appears for visitors to the deployed site."
+            )
+            _repo_root = an.DATA_DIR.parent.parent  # app/data -> app -> repo root
+            api_key = st.text_input(
+                "Census API key", type="password",
+                value=os.environ.get("CENSUS_API_KEY", ""),
+                help="Free key: https://api.census.gov/data/key_signup.html. "
+                     "Used only for this run, never written to disk or logged.",
+                key="census_api_key_input",
+            )
+            confirm = st.checkbox(
+                "I understand this calls the Census API and can take 10–30 minutes "
+                "(153 indicator pairs × 3 ACS windows for bivariate LISA alone)"
+            )
+            if st.button("Run pipeline now", disabled=not (api_key and confirm)):
+                env = os.environ.copy()
+                env["CENSUS_API_KEY"] = api_key
+                log_lines: list[str] = []
+                log_box = st.empty()
+                log_box.code("Starting pipeline/run_all.R ...")
+                try:
+                    proc = subprocess.Popen(
+                        [_auto_rscript, "pipeline/run_all.R"],
+                        cwd=str(_repo_root), env=env,
+                        stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                        text=True, bufsize=1,
+                    )
+                    for line in proc.stdout:
+                        log_lines.append(line.rstrip("\n"))
+                        log_box.code("\n".join(log_lines[-200:]) or "(no output yet)")
+                    proc.wait()
+                except FileNotFoundError:
+                    st.error(f"Couldn't run '{_auto_rscript}'.")
                 else:
-                    st.error(f"Pipeline exited with code {proc.returncode}. See the log above.")
+                    if proc.returncode == 0:
+                        st.success("Pipeline finished. Reloading data…")
+                        load_all.clear()
+                        st.rerun()
+                    else:
+                        st.error(f"Pipeline exited with code {proc.returncode}. See the log above.")
+    else:
+        st.caption(f"Data last refreshed {META['built_at']}, updated periodically by the project author.")
     st.divider()
 
     sub = local[(local["indicator"] == indicator) & (local["year"] == year)].copy()
