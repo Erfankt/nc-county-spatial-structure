@@ -68,8 +68,10 @@ h1, h2, h3 { font-family: 'Source Serif 4', Georgia, serif !important; color: va
 }
 .fa-sidebar-kicker { color: var(--fa-clay-light); font-size: 0.68rem; }
 .fa-hero h1 { margin: 0 0 0.3rem 0 !important; font-size: 2.05rem !important; line-height: 1.18; }
-.fa-hero p { color: #6b5f4f; font-size: 1rem; max-width: 68ch; margin: 0 0 0.6rem 0; }
+.fa-hero p { color: #6b5f4f; font-size: 0.82rem; max-width: 100%; white-space: nowrap; margin: 0 0 0.6rem 0; }
 .fa-hero-rule { height: 3px; width: 64px; background: var(--fa-clay); margin: 0.35rem 0 1.2rem 0; border-radius: 2px; }
+.fa-map-title { font-family: 'Source Serif 4', Georgia, serif; color: var(--fa-pine); font-weight: 600; font-size: 1.05rem; margin: 0 0 0.5rem 0; }
+.fa-controls-kicker { font-family: 'Inter', sans-serif; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fa-clay); margin: 0 0 0.3rem 0; }
 
 /* ---- Sidebar: dark pine panel, cream text for labels/headings, light cards for inputs ---- */
 [data-testid="stSidebar"] { background-color: var(--fa-pine) !important; }
@@ -208,27 +210,6 @@ def window(y: int) -> str:
     return f"{an.WINDOW_LABELS.get(y, str(y))} (ACS {y})"
 
 
-# --------------------------------------------------------------- sidebar
-st.sidebar.markdown(
-    """
-    <div class="fa-sidebar-kicker">Field Atlas</div>
-    <h1 style="margin:0 0 0.1rem 0; color:#f3ede0;">NC County Spatial Structure</h1>
-    <p style="color:#cddbd3; font-size:0.85rem; margin:0 0 0.6rem 0;">100 counties &middot; ACS 5-year estimates</p>
-    """,
-    unsafe_allow_html=True,
-)
-indicator = st.sidebar.selectbox("Indicator", list(LABEL), format_func=LABEL.get)
-year = st.sidebar.radio("ACS window", WINDOWS, index=len(WINDOWS) - 1, format_func=window)
-_view_opts = (["Evidence grade"] if D["evidence"] is not None else []) + \
-    ["Values", "Clusters (FDR-adjusted)", "Clusters (unadjusted)"]
-view = st.sidebar.radio("Map shows", _view_opts)
-st.sidebar.markdown("---")
-st.sidebar.caption(
-    f"Built {META['built_at']}. {P['n_permutations']:,} permutations, seed {P['seed']}. "
-    "Data: U.S. Census Bureau, American Community Survey."
-)
-
-
 # ------------------------------------------------- refresh data (local only)
 def _find_rscript() -> str | None:
     """Locate Rscript: PATH first, then common Windows install folders."""
@@ -240,65 +221,17 @@ def _find_rscript() -> str | None:
     return candidates[-1] if candidates else None
 
 
-with st.sidebar.expander("Refresh Census data"):
-    st.caption(
-        "Re-pulls every ACS variable from the Census API and rebuilds all files in "
-        "app/data/. Local only \u2014 needs R installed on this machine; a Streamlit "
-        "Community Cloud deployment has no R runtime, so this control won't work there."
-    )
-    _repo_root = an.DATA_DIR.parent.parent  # app/data -> app -> repo root
-    _auto_rscript = _find_rscript()
-    rscript_path = _auto_rscript or st.text_input(
-        "Rscript.exe path (not found automatically)",
-        placeholder=r"C:\Program Files\R\R-4.4.1\bin\Rscript.exe",
-        key="rscript_path_input",
-    )
-    api_key = st.text_input(
-        "Census API key", type="password",
-        value=os.environ.get("CENSUS_API_KEY", ""),
-        help="Free key: https://api.census.gov/data/key_signup.html. "
-             "Used only for this run, never written to disk or logged.",
-        key="census_api_key_input",
-    )
-    confirm = st.checkbox(
-        "I understand this calls the Census API and can take 10\u201330 minutes "
-        "(153 indicator pairs \u00d7 3 ACS windows for bivariate LISA alone)"
-    )
-    if st.button("Run pipeline now", disabled=not (rscript_path and api_key and confirm)):
-        env = os.environ.copy()
-        env["CENSUS_API_KEY"] = api_key
-        log_lines: list[str] = []
-        log_box = st.empty()
-        log_box.code("Starting pipeline/run_all.R ...")
-        try:
-            proc = subprocess.Popen(
-                [rscript_path, "pipeline/run_all.R"],
-                cwd=str(_repo_root), env=env,
-                stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
-                text=True, bufsize=1,
-            )
-            for line in proc.stdout:
-                log_lines.append(line.rstrip("\n"))
-                log_box.code("\n".join(log_lines[-200:]) or "(no output yet)")
-            proc.wait()
-        except FileNotFoundError:
-            st.error(f"Couldn't run '{rscript_path}' \u2014 check the path above.")
-        else:
-            if proc.returncode == 0:
-                st.success("Pipeline finished. Reloading data\u2026")
-                load_all.clear()
-                st.rerun()
-            else:
-                st.error(f"Pipeline exited with code {proc.returncode}. See the log above.")
+_view_opts = (["Evidence grade"] if D["evidence"] is not None else []) + \
+    ["Values", "Clusters (FDR-adjusted)", "Clusters (unadjusted)"]
+
 
 # ------------------------------------------------------------- tabs
 st.markdown(
     """
     <div class="fa-hero">
       <div class="fa-kicker">North Carolina &middot; County-Level Analysis</div>
-      <h1>Where do North Carolina counties cluster, and how much of it is real?</h1>
-      <p>Spatial autocorrelation of county socioeconomic indicators, with multiple-testing correction and
-      a check against ACS sampling error.</p>
+      <h1>Where do North Carolina counties cluster?</h1>
+      <p>Spatial autocorrelation of county socioeconomic indicators, with multiple-testing correction and a check against ACS sampling error.</p>
       <div class="fa-hero-rule"></div>
     </div>
     """,
@@ -316,6 +249,70 @@ rob = rob_all[rob_all["year"] == LATEST]
 
 # ------------------------------------------------------------ map explorer
 with tab_map:
+    st.markdown('<div class="fa-controls-kicker">Map controls</div>', unsafe_allow_html=True)
+    c1, c2, c3 = st.columns([2, 2, 3])
+    with c1:
+        indicator = st.selectbox("Indicator", list(LABEL), format_func=LABEL.get)
+    with c2:
+        year = st.radio("ACS window", WINDOWS, index=len(WINDOWS) - 1, format_func=window, horizontal=True)
+    with c3:
+        view = st.radio("Map shows", _view_opts, horizontal=True)
+    st.caption(
+        f"Built {META['built_at']}. {P['n_permutations']:,} permutations, seed {P['seed']}. "
+        "Data: U.S. Census Bureau, American Community Survey."
+    )
+    with st.expander("Refresh Census data"):
+        st.caption(
+            "Re-pulls every ACS variable from the Census API and rebuilds all files in "
+            "app/data/. Local only \u2014 needs R installed on this machine; a Streamlit "
+            "Community Cloud deployment has no R runtime, so this control won't work there."
+        )
+        _repo_root = an.DATA_DIR.parent.parent  # app/data -> app -> repo root
+        _auto_rscript = _find_rscript()
+        rscript_path = _auto_rscript or st.text_input(
+            "Rscript.exe path (not found automatically)",
+            placeholder=r"C:\Program Files\R\R-4.4.1\bin\Rscript.exe",
+            key="rscript_path_input",
+        )
+        api_key = st.text_input(
+            "Census API key", type="password",
+            value=os.environ.get("CENSUS_API_KEY", ""),
+            help="Free key: https://api.census.gov/data/key_signup.html. "
+                 "Used only for this run, never written to disk or logged.",
+            key="census_api_key_input",
+        )
+        confirm = st.checkbox(
+            "I understand this calls the Census API and can take 10\u201330 minutes "
+            "(153 indicator pairs \u00d7 3 ACS windows for bivariate LISA alone)"
+        )
+        if st.button("Run pipeline now", disabled=not (rscript_path and api_key and confirm)):
+            env = os.environ.copy()
+            env["CENSUS_API_KEY"] = api_key
+            log_lines: list[str] = []
+            log_box = st.empty()
+            log_box.code("Starting pipeline/run_all.R ...")
+            try:
+                proc = subprocess.Popen(
+                    [rscript_path, "pipeline/run_all.R"],
+                    cwd=str(_repo_root), env=env,
+                    stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                    text=True, bufsize=1,
+                )
+                for line in proc.stdout:
+                    log_lines.append(line.rstrip("\n"))
+                    log_box.code("\n".join(log_lines[-200:]) or "(no output yet)")
+                proc.wait()
+            except FileNotFoundError:
+                st.error(f"Couldn't run '{rscript_path}' \u2014 check the path above.")
+            else:
+                if proc.returncode == 0:
+                    st.success("Pipeline finished. Reloading data\u2026")
+                    load_all.clear()
+                    st.rerun()
+                else:
+                    st.error(f"Pipeline exited with code {proc.returncode}. See the log above.")
+    st.divider()
+
     sub = local[(local["indicator"] == indicator) & (local["year"] == year)].copy()
     ind_y = D["ind"][D["ind"]["year"] == year].set_index("GEOID")
     sub["moe"] = sub["GEOID"].map(ind_y[f"{indicator}_moe"])
@@ -350,24 +347,9 @@ with tab_map:
             sub, geojson=D["geo"], locations="GEOID", featureidkey="properties.GEOID", color="Cluster",
             color_discrete_map=an.CLUSTER_COLORS, category_orders={"Cluster": an.CLUSTER_ORDER},
             hover_name="NAME", hover_data=hover, map_style="white-bg", center=center, zoom=5.15, opacity=0.85)
-    fig.update_layout(margin=dict(l=0, r=0, t=0, b=0), height=400, legend=dict(orientation="h", y=-0.02))
-    left, right = st.columns([3, 2])
-    with left:
-        st.subheader(f"{LABEL[indicator]}, {window(year)}")
-        st.plotly_chart(fig, use_container_width=True)
-    with right:
-        st.subheader("Moran scatterplot")
-        vals = sub.set_index("GEOID")["value"]
-        sc = an.moran_scatter(vals, D["nb"]).merge(sub[["GEOID", "NAME", cl_col]], on="GEOID")
-        is_cluster_view = view not in ("Values", "Evidence grade")
-        sc = sc.rename(columns={cl_col: "Cluster"}) if is_cluster_view else sc.assign(Cluster="Not significant")
-        sfig = px.scatter(sc, x="z", y="lag_z", color="Cluster", hover_name="NAME",
-                          color_discrete_map=an.CLUSTER_COLORS, category_orders={"Cluster": an.CLUSTER_ORDER},
-                          labels={"z": "Standardised value", "lag_z": "Neighbour average"})
-        sfig.add_hline(y=0, line_color="grey"); sfig.add_vline(x=0, line_color="grey")
-        sfig.update_layout(height=330, margin=dict(l=0, r=0, t=10, b=0), showlegend=is_cluster_view)
-        st.plotly_chart(sfig, use_container_width=True)
-        gi = an.morans_i(vals, D["nb"])
+    fig.update_layout(margin=dict(l=0, r=0, t=0, b=0), height=440, legend=dict(orientation="h", y=-0.02))
+    st.markdown(f'<div class="fa-map-title">{LABEL[indicator]}, {window(year)}</div>', unsafe_allow_html=True)
+    st.plotly_chart(fig, use_container_width=True)
 
     if D["bvlisa"] is not None:
         with st.expander("Bivariate LISA — spatial co-clustering of indicator pairs"):
@@ -438,6 +420,23 @@ with tab_time:
 
 # --------------------------------------------------------------- robustness
 with tab_rob:
+    st.subheader("Moran scatterplot")
+    st.caption(
+        f"Showing {LABEL[indicator]}, {window(year)} — the indicator and window currently selected in "
+        "Map explorer. Parked here for now; placement to be decided."
+    )
+    vals = sub.set_index("GEOID")["value"]
+    sc = an.moran_scatter(vals, D["nb"]).merge(sub[["GEOID", "NAME", cl_col]], on="GEOID")
+    is_cluster_view = view not in ("Values", "Evidence grade")
+    sc = sc.rename(columns={cl_col: "Cluster"}) if is_cluster_view else sc.assign(Cluster="Not significant")
+    sfig = px.scatter(sc, x="z", y="lag_z", color="Cluster", hover_name="NAME",
+                      color_discrete_map=an.CLUSTER_COLORS, category_orders={"Cluster": an.CLUSTER_ORDER},
+                      labels={"z": "Standardised value", "lag_z": "Neighbour average"})
+    sfig.add_hline(y=0, line_color="grey"); sfig.add_vline(x=0, line_color="grey")
+    sfig.update_layout(height=330, margin=dict(l=0, r=0, t=10, b=0), showlegend=is_cluster_view)
+    st.plotly_chart(sfig, use_container_width=True)
+    st.divider()
+
     st.subheader("How much does ACS sampling error change the picture?")
     st.markdown(
         "Each county estimate is redrawn "
