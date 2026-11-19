@@ -312,7 +312,7 @@ with tab_map:
                     else:
                         st.error(f"Pipeline exited with code {proc.returncode}. See the log above.")
     else:
-        st.caption(f"Data last refreshed {META['built_at']}, updated periodically by the project author.")
+        st.caption(f"Data last refreshed {META['built_at']}.")
     st.divider()
 
     sub = local[(local["indicator"] == indicator) & (local["year"] == year)].copy()
