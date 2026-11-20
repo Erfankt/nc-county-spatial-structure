@@ -255,7 +255,20 @@ with tab_map:
     with c2:
         year = st.radio("ACS window", WINDOWS, index=len(WINDOWS) - 1, format_func=window, horizontal=True)
     with c3:
-        view = st.radio("Map shows", _view_opts, horizontal=True)
+        view = st.radio(
+            "Map shows", _view_opts, horizontal=True,
+            help=(
+                "**Evidence grade** — one trust label per county, combining FDR significance, "
+                "agreement between the permutation and analytic tests, and resampling stability "
+                "(*Robust* down to *Unreliable estimate*).\n\n"
+                "**Values** — the raw indicator value itself, shaded continuously. No cluster "
+                "testing involved.\n\n"
+                "**Clusters (FDR-adjusted)** — hotspot/coldspot/outlier labels after correcting "
+                "for testing all 100 counties at once. The recommended cluster view.\n\n"
+                "**Clusters (unadjusted)** — the same cluster test at a flat 5% cutoff, with no "
+                "correction — includes false alarms that FDR adjustment would remove."
+            ),
+        )
     st.caption(
         f"Built {META['built_at']}. {P['n_permutations']:,} permutations, seed {P['seed']}. "
         "Data: U.S. Census Bureau, American Community Survey."
